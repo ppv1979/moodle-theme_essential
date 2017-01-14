@@ -23,6 +23,7 @@
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+echo '<div id="page-top-header" class="clearfix">';
 echo '<div id="page-navbar" class="clearfix row-fluid">';
 if ($left) {
     echo '<div class="breadcrumb-nav span9">';
@@ -38,3 +39,6 @@ if (!$left) {
     echo '</div>';
 }
 echo '</div>';
+echo $OUTPUT->page_top_header();
+echo '</div>';
+echo $OUTPUT->essential_blocks('header', 'row-fluid', 'aside', 'headerblocksperrow');

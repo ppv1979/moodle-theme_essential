@@ -29,16 +29,20 @@ require_once(\theme_essential\toolbox::get_tile_file('header'));
 ?>
 
 <div id="page" class="container-fluid">
-    <?php require_once(\theme_essential\toolbox::get_tile_file('pagenavbar')); ?>
+    <?php require_once(\theme_essential\toolbox::get_tile_file('pagetopheader')); ?>
     <!-- Start Main Regions -->
     <div id="page-content" class="row-fluid">
         <section id="region-main" class="span12">
-            <?php echo $OUTPUT->course_title(); ?>
-            <?php echo $OUTPUT->course_content_header(); ?>
-            <?php echo $OUTPUT->main_content(); ?>
-            <?php if (empty($PAGE->layout_options['nocoursefooter'])) {
+            <?php
+            if (\theme_essential\toolbox::get_setting('pagetopblocks')) {
+                echo $OUTPUT->essential_blocks('page-top', 'row-fluid', 'aside', 'pagetopblocksperrow');
+            }
+            echo $OUTPUT->course_title();
+            echo $OUTPUT->course_content_header();
+            echo $OUTPUT->main_content();
+            if (empty($PAGE->layout_options['nocoursefooter'])) {
                 echo $OUTPUT->course_content_footer();
-}
+            }
             ?>
         </section>
     </div>

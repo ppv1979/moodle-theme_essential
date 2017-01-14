@@ -292,7 +292,7 @@ class toolbox {
     static public function render_slide($slideno, $captionoptions) {
         $slideurl = self::get_setting('slide'.$slideno.'url');
         $slideurltarget = self::get_setting('slide'.$slideno.'target');
-        $slidetitle = self::get_setting('slide'.$slideno);
+        $slidetitle = format_string(self::get_setting('slide'.$slideno));
         $slidecaption = self::get_setting('slide'.$slideno.'caption', 'format_html');
         if ($slideurl) {
             // Strip links from the caption to prevent link in a link.
@@ -364,9 +364,11 @@ class toolbox {
     }
 
     static public function render_slide_controls() {
-        $prev = '<a class="left carousel-control" href="#essentialCarousel" data-slide="prev">';
+        $strprev = get_string('prev');
+        $strnext = get_string('next');
+        $prev = '<a class="left carousel-control" href="#essentialCarousel" data-slide="prev" aria-label="'.$strprev.'">';
         $prev .= '<span aria-hidden="true" class="fa fa-chevron-circle-left"></span></a>';
-        $next = '<a class="right carousel-control" href="#essentialCarousel" data-slide="next">';
+        $next = '<a class="right carousel-control" href="#essentialCarousel" data-slide="next" aria-label="'.$strnext.'">';
         $next .= '<span aria-hidden="true" class="fa fa-chevron-circle-right"></span></a>';
 
         return $prev . $next;
@@ -648,6 +650,30 @@ class toolbox {
 
         $css = str_replace($tagattach, $replacementattach, $css);
         $css = str_replace($tagrepeat, $replacementrepeat, $css);
+        $css = str_replace($tagsize, $replacementsize, $css);
+        return $css;
+    }
+
+    static public function set_loginbackground($css, $loginbackground) {
+        $tag = '[[setting:loginbackground]]';
+        if (!($loginbackground)) {
+            $replacement = 'none';
+        } else {
+            $replacement = 'url(\''.$loginbackground.'\')';
+        }
+        $css = str_replace($tag, $replacement, $css);
+        return $css;
+    }
+
+    static public function set_loginbackgroundstyle($css, $style, $opacity) {
+        $tagopacity = '[[setting:loginbackgroundopacity]]';
+        $tagsize = '[[setting:loginbackgroundstyle]]';
+        $replacementsize = 'cover';
+        if ($style === 'stretch') {
+            $replacementsize = '100% 100%';
+        }
+
+        $css = str_replace($tagopacity, $opacity, $css);
         $css = str_replace($tagsize, $replacementsize, $css);
         return $css;
     }

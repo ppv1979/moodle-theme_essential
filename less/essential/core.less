@@ -11,14 +11,19 @@ body {
     padding: 0;
 }
 
-a {
-    font-family: inherit;
-    text-decoration: none;
-}
-
+a,
 a:hover,
 a:focus {
     text-decoration: none;
+}
+
+// Accessibility: Skip block link, for keyboard-only users.
+.skiplinks .skip:focus {
+    position: absolute;
+    top: 0;
+    background-color: @white;
+    z-index: 201; // 1 more than for #essentialnavbar in navigation.less.
+    padding: 8px;
 }
 
 .text_to_html {
@@ -75,6 +80,16 @@ ins {
             .border-radius(0);
             padding: 0;
         }
+    }
+}
+
+.used-region-header {
+    #block-region-header,
+    &.pagelayout-frontpage #page #page-content {
+        margin-top: 10px;
+    }
+    #page #page-content {
+        margin-top: 0;
     }
 }
 
@@ -153,6 +168,10 @@ body {
 .generaltable {
     img[src$="spacer"] {
         background-color: transparent;
+    }
+    .dimmed_text {
+        color: inherit;
+        font-style: italic;
     }
 }
 
