@@ -866,8 +866,10 @@ $string['propertiesreturn'] = 'Return';
 $string['putpropertiesname'] = 'Put properties - Experimental!';
 $string['putpropertiesdesc'] = 'Paste the JSON string and \'Save changes\'.  Warning!  Does not valiate setting values and performs a \'Purge all caches\'.';
 
-$string['putpropertiereport'] = 'Report:';
-$string['putpropertieversion'] = 'version:';
+$string['putpropertyreport'] = 'Report:';
+$string['putpropertyversion'] = 'version:';
+$string['putpropertyproperties'] = 'Properties';
+$string['putpropertyour'] = 'Our';
 $string['putpropertiesignorecti'] = 'Ignoring all course title image settings.';
 $string['putpropertiesreportfiles'] = 'Remember to upload the following files to their settings:';
 $string['putpropertiessettingsreport'] = 'Settings report:';

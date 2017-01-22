@@ -56,22 +56,21 @@ FAQ - http://www.gnu.org/licenses/gpl-faq.html - is a good place to look.
 If you reuse any of the code then I kindly ask that you make reference to the theme.
 
 If you make improvements or bug fixes then I would appreciate if you would send them back to me by forking from
-https://github.com/gjb2048/moodle-theme_essential and doing a 'Pull Request' so that the rest of the
-Moodle community benefits.
+https://github.com/gjb2048/moodle-theme_essential and doing a 'Pull Request' so that the rest of the Moodle community benefits.
 
 Support
 =======
 As Essential is licensed under the GNU GPLv3 License it comes with NO support.  If you would like support from
-me (Gareth) then I'm happy to provide it for a fee (please see my contact details above).  Otherwise, the 'Themes' forum:
-moodle.org/mod/forum/view.php?id=46 is an excellent place to ask questions.
+me (Gareth) then I'm happy to provide it for a fee.  Please contact me via my 'Moodle profile' in 'Developed and maintained by'
+above.  Otherwise, the 'Themes' forum: moodle.org/mod/forum/view.php?id=46 is an alternative.
 
 Sponsorships
 ============
 This theme is provided to you for free, and if you want to express your gratitude for using this theme, please consider sponsoring
 by:
 
-PayPal - Please contact me (Gareth) via my 'Moodle profile' (above) for details as I am an individual and therefore am unable to have
-'buy me now' buttons under their terms.
+PayPal - Please contact me (Gareth) via my 'Moodle profile' in 'Developed and maintained by' above for details as I am an individual
+and therefore am unable to have 'buy me now' buttons under their terms.
 
 Flattr - https://flattr.com/profile/gjb2048
 
@@ -112,8 +111,8 @@ Toshimi Hatanaka
 Customisation
 =============
 If you like this theme and would like me to customise it, transpose functionality to another theme, build a new theme from scratch
-or create a child theme then I offer competitive rates.  Please contact me via 'www.gjbarnard.co.uk/contact/' or
-'gjbarnard at gmail dot com' or 'about.me/gjbarnard' to discuss your requirements.
+or create a child theme then I offer competitive rates.  Please contact me via my 'Moodle profile' in 'Developed and maintained by'
+above to discuss your requirements.
 
 Required version of Moodle
 ==========================
@@ -188,12 +187,6 @@ Videos and FitVids
 ==================
 Essential uses FitVids.js - http://fitvidsjs.com/ - to make embedded videos responsive.  If you do not want this feature for a
 particular video, then please add the class 'fitvidsignore' to the video element.
-
-WOFF2 Font Support
-==================
-WOFF2 font support will automatically kick in if you are running Moodle 2.8.5+ (Build: 20150313) - 2014111005.01 or above.  If you
-are and the settings do not appear on the font setting page when using 'Custom font' for 'fontselect', then perform a
-'Purge all caches'.
 
 Category course title image in a course
 =======================================
