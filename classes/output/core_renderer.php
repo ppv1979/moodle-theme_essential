@@ -27,6 +27,8 @@
 
 namespace theme_essential\output;
 
+defined('MOODLE_INTERNAL') || die;
+
 use block_contents;
 use block_move_target;
 use coding_exception;
@@ -488,7 +490,7 @@ class core_renderer extends \core_renderer {
     /**
      * Defines the Moodle custom_menu
      * @param string $custommenuitems
-     * @return render_custom_menu for $custommenu
+     * @return string Rendered custom menu.
      */
     public function custom_menu($custommenuitems = '') {
         global $CFG;
@@ -497,7 +499,7 @@ class core_renderer extends \core_renderer {
             $custommenuitems = $CFG->custommenuitems;
         }
         $custommenu = new custom_menu($custommenuitems, current_language());
-        return $this->render_custom_menu($custommenu);
+        return $this->render_the_custom_menu($custommenu, 'custom_menu', true);
     }
 
     /**
@@ -590,7 +592,7 @@ class core_renderer extends \core_renderer {
 
     /**
      * Outputs the language menu
-     * @return custom_menu object
+     * @return string Rendered custom menu.
      */
     public function custom_menu_language() {
         global $CFG;
@@ -619,7 +621,7 @@ class core_renderer extends \core_renderer {
                     array('lang' => $langtype)), $langname);
             }
         }
-        return $this->render_custom_menu($langmenu);
+        return $this->render_the_custom_menu($langmenu, 'custom_menu_language');
     }
 
     protected static function timeaccesscompare($a, $b) {
@@ -650,7 +652,7 @@ class core_renderer extends \core_renderer {
 
     /**
      * Outputs the courses menu
-     * @return custom_menu object
+     * @return string Rendered custom menu.
      */
     public function custom_menu_courses() {
         global $CFG;
@@ -773,12 +775,12 @@ class core_renderer extends \core_renderer {
                 }
             }
 
+            $mycoursescatsubmenu = \theme_essential\toolbox::get_setting('mycoursescatsubmenu');
             if ($courses) {
                 $mycoursesmax = \theme_essential\toolbox::get_setting('mycoursesmax');
                 if (!$mycoursesmax) {
                     $mycoursesmax = PHP_INT_MAX;
                 }
-                $mycoursescatsubmenu = \theme_essential\toolbox::get_setting('mycoursescatsubmenu');
                 if ($mycoursescatsubmenu) {
                     $enablecategoryicon = \theme_essential\toolbox::get_setting('enablecategoryicon');
                     $defaultcategoryicon = \theme_essential\toolbox::get_setting('defaultcategoryicon');
@@ -847,8 +849,10 @@ class core_renderer extends \core_renderer {
                 $noenrolments = get_string('noenrolments', 'theme_essential');
                 $coursemenubranch->add('<em>' . $noenrolments . '</em>', new moodle_url('#'), $noenrolments);
             }
+            return $this->render_the_custom_menu($coursemenu, 'custom_menu_courses', $mycoursescatsubmenu);
         }
-        return $this->render_custom_menu($coursemenu);
+
+        return '';
     }
 
     /**
@@ -887,7 +891,7 @@ class core_renderer extends \core_renderer {
 
     /**
      * Outputs the alternative colours menu
-     * @return custom_menu object
+     * @return string Rendered custom menu.
      */
     public function custom_menu_themecolours() {
         $colourmenu = new custom_menu();
@@ -923,12 +927,12 @@ class core_renderer extends \core_renderer {
                 }
             }
         }
-        return $this->render_custom_menu($colourmenu);
+        return $this->render_the_custom_menu($colourmenu, 'custom_menu_themecolours');
     }
 
     /**
      * Outputs the Activity Stream menu
-     * @return custom_menu object
+     * @return string Rendered custom menu.
      */
     public function custom_menu_activitystream() {
         if (!isguestuser()) {
@@ -966,10 +970,21 @@ class core_renderer extends \core_renderer {
                             array('id' => $this->page->course->id)));
                     }
                 }
-                return $this->render_custom_menu($activitystreammenu);
+                return $this->render_the_custom_menu($activitystreammenu, 'custom_menu_activitystream');
             }
         }
         return '';
+    }
+
+    protected function render_the_custom_menu(custom_menu $custommenu, $id, $usessubmenus = false, $additionalclasses = '') {
+        if (\theme_essential\toolbox::get_setting('dropdownmenuscroll')) {
+            if ($usessubmenus) {
+                $additionalclasses .= ' dropdownsubmenuscroll';
+            } else {
+                $additionalclasses .= ' dropdownmenuscroll';
+            }
+        }
+        return '<div id="'.$id.'" class="custom_menu'.$additionalclasses.'">'.$this->render_custom_menu($custommenu).'</div>';
     }
 
     private function get_course_activities() {
@@ -1165,7 +1180,7 @@ class core_renderer extends \core_renderer {
                 $message->smallmessage = html_to_text($message->smallmessage);
             }
             if (strlen($message->smallmessage) > 18) {
-                $messagecontent->text = substr($message->smallmessage, 0, 15) . '...';
+                $messagecontent->text = \core_text::substr($message->smallmessage, 0, 15) . '...';
             } else {
                 $messagecontent->text = $message->smallmessage;
             }
@@ -1377,7 +1392,7 @@ class core_renderer extends \core_renderer {
 
     /**
      * Outputs the user menu.
-     * @return custom_menu object
+     * @return string Rendered custom menu.
      */
     public function custom_menu_user() {
         // Die if executed during install.
@@ -2098,8 +2113,11 @@ class core_renderer extends \core_renderer {
         $output = parent::standard_footer_html();
         $output .= html_writer::start_tag('div', array ('class' => 'themecredit')).
             get_string('credit', 'theme_essential',
-            array('name' => html_writer::link('https://moodle.org/plugins/theme_essential', 'Essential', array('target' => '_blank')))).
-            html_writer::link('//about.me/gjbarnard', 'Gareth J Barnard', array('target' => '_blank')).html_writer::end_tag('div');
+            array('name' => html_writer::link('https://moodle.org/plugins/theme_essential', 'Essential', array(
+                'target' => '_blank',
+                'title' => get_string('download', 'theme_essential'))))).
+            html_writer::link('//about.me/gjbarnard', 'Gareth J Barnard', array(
+                'target' => '_blank', 'title' => get_string('aboutme', 'theme_essential'))).html_writer::end_tag('div');
 
         return $output;
     }

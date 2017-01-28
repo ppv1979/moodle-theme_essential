@@ -190,6 +190,8 @@ $string['logoheightdesc'] = 'The height of the logo image.  This can be specifie
 $string['logodimerror'] = ' is invalid.  Please state \'px\' or \'em\' immediately after the unit value and nothing before the unit value.';
 
 $string['credit'] = 'The {$a->name} theme for Moodle is developed by ';
+$string['download'] = 'Go to the download page';
+$string['aboutme'] = 'About me';
 
 $string['profilebarcustomtitle'] = 'Profile bar custom block title';
 $string['profilebarcustomtitledesc'] = 'Title for custom profile bar block.';
@@ -707,6 +709,11 @@ $string['oldnavbardesc'] = 'Enable this option to use the old navbar position, p
 $string['navbarabove'] = 'Navbar above the header';
 $string['navbarbelow'] = 'Navbar below the header';
 
+$string['dropdownmenuscroll'] = 'Scrollbars on the dropdown menus';
+$string['dropdownmenuscrolldesc'] = 'Have a scrollbar on the dropdown menu where the height of the menu is limited.';
+$string['dropdownmenumaxheight'] = 'Dropdown menu maximum height';
+$string['dropdownmenumaxheightdesc'] = 'Dropdown menu maximum height when scrollbars are enabled.  Between {$a->lower} and {$a->upper} pixels.';
+
 $string['usesiteicon'] = 'Use site icon';
 $string['usesiteicondesc'] = 'Use the site icon if there is no logo.';
 
@@ -847,6 +854,31 @@ $string['analyticsuseuserid'] = 'User ID';
 $string['analyticsuseuseriddesc'] = 'Enable use of User ID in tracking.';
 $string['analyticspiwik'] = 'Piwik';
 $string['analyticsguniversal'] = 'Google Universal Analytics';
+
+// Properties.
+$string['properties'] = 'Properties';
+$string['propertiessub'] = 'The properties';
+$string['propertiesdesc'] = 'List of properties.';
+$string['propertiesproperty'] = 'Property';
+$string['propertiesvalue'] = 'Value';
+$string['propertiesexport'] = 'Export properties as a JSON string';
+$string['propertiesreturn'] = 'Return';
+$string['putpropertiesname'] = 'Put properties - Experimental!';
+$string['putpropertiesdesc'] = 'Paste the JSON string and \'Save changes\'.  Warning!  Does not valiate setting values and performs a \'Purge all caches\'.';
+
+$string['putpropertyreport'] = 'Report:';
+$string['putpropertyversion'] = 'version:';
+$string['putpropertyproperties'] = 'Properties';
+$string['putpropertyour'] = 'Our';
+$string['putpropertiesignorecti'] = 'Ignoring all course title image settings.';
+$string['putpropertiesreportfiles'] = 'Remember to upload the following files to their settings:';
+$string['putpropertiessettingsreport'] = 'Settings report:';
+$string['putpropertiesvalue'] = '->';
+$string['putpropertiesfrom'] = 'from';
+$string['putpropertieschanged'] = 'Changed:';
+$string['putpropertiesunchanged'] = 'Unchanged:';
+$string['putpropertiesadded'] = 'Added:';
+$string['putpropertiesignored'] = 'Ignored:';
 
 // Style guide.
 $string['styleguide'] = 'Style guide';
