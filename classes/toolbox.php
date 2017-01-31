@@ -951,7 +951,6 @@ class toolbox {
 
         // Need to ignore and report on any unknown settings.
         $report .= get_string('putpropertiessettingsreport', 'theme_essential').PHP_EOL;
-        $changedprops = array();
         $changed = '';
         $unchanged = '';
         $added = '';
@@ -961,7 +960,6 @@ class toolbox {
             $settinglog = '\''.$propkey.'\' '.get_string('putpropertiesvalue', 'theme_essential').' \''.$propvalue.'\'';
             if (array_key_exists($propkey, $currentprops)) {
                 if ($propvalue != $currentprops[$propkey]->value) {
-                    $changedprops[] = $propkey;
                     $settinglog .= ' '.get_string('putpropertiesfrom', 'theme_essential').' \''.$currentprops[$propkey]->value.'\'';
                     $changed .= $settinglog.'.'.PHP_EOL;
                     $DB->update_record('config_plugins', array('id' => $currentprops[$propkey]->id, 'value' => $propvalue), true);
@@ -988,11 +986,6 @@ class toolbox {
         }
         if (!empty($ignored)) {
             $report .= get_string('putpropertiesignored', 'theme_essential').PHP_EOL.$ignored.PHP_EOL;
-        }
-
-        if (!empty($changedprops)) {
-            // We need the 'id's for the records.
-            global $DB;
         }
 
         return $report;
