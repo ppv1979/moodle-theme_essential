@@ -1,3 +1,15 @@
+New in 3.1.1.8
+==============
+- FIX: Issue #794: Hidden grade items in user report not clear as such.
+- FIX: Issue #804: 'Hide default page editing button' hides anything that could be in that place.
+- FIX: Issue #805: Suspended user odd rows.
+- FIX: Alternative colour table odd row colour.
+- FIX: RTL header dotted separator appearing twice.
+- FIX: User image table even row background.
+- FIX: Forum table user image link height.
+- FIX: Environment table help icon spacing.
+- NEW: User image border radius settings.
+
 New in 3.1.1.7
 ==============
 - FIX: Issue #799: Message avatar overlap.
