@@ -28,13 +28,6 @@
         float: right;
     }
 }
-
-
-.dir-rtl .breadcrumb-button {
-    .singlebutton, a {
-        float: left;
-    }
-}
 /* @end */
 
 /* @group Breadcrumb */
@@ -56,20 +49,20 @@
     /* @group Breadcrumb Style Fancy */
 
     ul.breadcrumb.style1 {
-        display: block;
-        padding: 0;
-        width: 100%;
-        overflow: hidden;
-        word-wrap: break-word;
-        text-overflow: clip;
         background-color: transparent;
+        display: block;
+        overflow: hidden;
+        padding: 0;
+        text-overflow: clip;
+        width: 100%;
+        word-wrap: break-word;
         li {
-            position: relative;
             display: block;
-            line-height: 28px;
             height: 28px;
-            text-shadow: none;
+            line-height: 28px;
             margin-bottom: 4px;
+            position: relative;
+            text-shadow: none;
             a {
                 text-decoration: none;
                 overflow: hidden;
@@ -79,34 +72,34 @@
             }
         }
         li:after {
-            content: " ";
-            display: block;
-            width: 0;
-            height: 0;
             border-top: 14px solid transparent;
             border-bottom: 14px solid transparent;
+            content: " ";
+            display: block;
+            height: 0;
+            margin-top: -14px;
             position: absolute;
             top: 50%;
-            margin-top: -14px;
+            width: 0;
             z-index: 1;
         }
         li:before {
-            content: " ";
-            display: block;
-            width: 0;
-            height: 0;
             border-top: 14px solid transparent;
             border-bottom: 14px solid transparent;
+            content: " ";
+            display: block;
+            height: 0;
+            margin-top: -14px;
             position: absolute;
             top: 50%;
-            margin-top: -14px;
+            width: 0;
             z-index: 1;
         }
         li:first-of-type {
             a:before {
+                content: "\f015";
                 display: inline-block;
                 font-family: FontAwesome;
-                content: "\f015";
                 text-decoration: none;
             }
         }
@@ -129,18 +122,18 @@
     /* @group Breadcrumb Style Simple */
 
     ul.breadcrumb.style2 {
-        width: 100%;
-        padding: 0;
-        display: block;
         background-color: transparent;
+        display: block;
         overflow: hidden;
-        word-wrap: break-word;
+        padding: 0;
         text-overflow: clip;
+        width: 100%;
+        word-wrap: break-word;
         li {
+            border-radius: 0;
             display: block;
             height: 20px;
             padding: 2px;
-            border-radius: 0px;
             text-shadow: none;
         }
         li:after {
@@ -156,23 +149,23 @@
     /* @group Breadcrumb Style Thin */
 
     ul.breadcrumb.style3 {
-        width: 100%;
-        display: block;
         background-color: transparent;
-        padding: 0;
+        display: block;
         overflow: hidden;
-        word-wrap: break-word;
+        padding: 0;
         text-overflow: clip;
+        width: 100%;
+        word-wrap: break-word;
         li {
-            line-height: 12px;
-            display: block;
-            text-transform: uppercase;
-            font-size: 12px;
             background-color: transparent;
+            display: block;
+            font-size: 12px;
+            line-height: 12px;
+            text-transform: uppercase;
         }
         li:after {
-            font-family: FontAwesome;
             content: "\f105";
+            font-family: FontAwesome;
             padding: 2px;
             vertical-align: top;
         }
@@ -184,7 +177,7 @@
     /* @end */
 }
 
-.dir-ltr .breadcrumb-nav {
+.breadcrumb-nav {
     ul.breadcrumb.style1 {
         float: left;
         margin-right: -@baseBorderRadius;
@@ -199,20 +192,20 @@
             }
         }
         li:after {
-            left: 100%;
-            border-left-width: 14px;
             border-left-style: solid;
+            border-left-width: 14px;
+            left: 100%;
         }
         li:before {
-            left: 100%;
-            border-left-width: 14px;
             border-left-style: solid;
+            border-left-width: 14px;
+            left: 100%;
             margin-left: 1px;
         }
         li:first-of-type {
-            padding-left: 34px;
-            border-top-left-radius: @baseBorderRadius;
             border-bottom-left-radius: @baseBorderRadius;
+            border-top-left-radius: @baseBorderRadius;
+            padding-left: 34px;
             a {
                 margin-left: -25px;
             }
@@ -222,9 +215,9 @@
         }
         .last,
         li:last-of-type {
-            padding-right: 10px;
-            border-top-right-radius: @baseBorderRadius;
             border-bottom-right-radius: @baseBorderRadius;
+            border-top-right-radius: @baseBorderRadius;
+            padding-right: 10px;
         }
     }
     /* @end */
@@ -238,13 +231,17 @@
             }
         }
         li:first-of-type {
-            border-top-left-radius: 4px;
             border-bottom-left-radius: 4px;
+            border-top-left-radius: 4px;
             a {
                 padding-left: 5px;
             }
         }
         li:after {
+            /*rtl:raw:
+            content: "\f137";
+            */
+            /*rtl:remove*/
             content: "\f138";
         }
         li:last-child:after {
@@ -252,8 +249,8 @@
             padding-right: 5px;
         }
         li:last-of-type {
-            border-top-right-radius: 4px;
             border-bottom-right-radius: 4px;
+            border-top-right-radius: 4px;
         }
     }
 
@@ -270,90 +267,5 @@
     /* @end */
 }
 
-.dir-rtl .breadcrumb-nav {
-    ul.breadcrumb.style1 {
-        float: right;
-        margin-right: -@baseBorderRadius;
-        li {
-            padding: 0 20px 0 0;
-            float: right;
-            a {
-                padding-left: 3px;
-            }
-            span {
-                margin-left: 4px;
-            }
-        }
-        li:after {
-            right: 100%;
-            border-right-width: 14px;
-            border-right-style: solid;
-        }
-        li:before {
-            right: 100%;
-            border-right-width: 14px;
-            border-right-style: solid;
-            margin-right: 1px;
-        }
-        li:first-of-type {
-            padding-right: 34px;
-            border-top-right-radius: @baseBorderRadius;
-            border-bottom-right-radius: @baseBorderRadius;
-            a {
-                margin-right: -25px;
-            }
-            a:before {
-                margin-left: 5px;
-            }
-        }
-        .last,
-        li:last-of-type {
-            padding-left: 10px;
-            border-top-left-radius: @baseBorderRadius;
-            border-bottom-left-radius: @baseBorderRadius;
-        }
-    }
-    /* @end */
-
-    /* @group Breadcrumb Style Simple */
-    ul.breadcrumb.style2 {
-        li {
-            float: right;
-            a {
-                margin-left: 3px;
-            }
-        }
-        li:first-of-type {
-            border-top-right-radius: 4px;
-            border-bottom-right-radius: 4px;
-            a {
-                padding-right: 5px;
-            }
-        }
-        li:after {
-            content: "\f137";
-        }
-        li:last-child:after {
-            content: "";
-            padding-left: 5px;
-        }
-        li:last-of-type {
-            border-top-left-radius: 4px;
-            border-bottom-left-radius: 4px;
-        }
-    }
-
-    /* @end */
-
-    /* @group Breadcrumb Style Thin */
-
-    ul.breadcrumb.style3 {
-        li {
-            float: right;
-        }
-    }
-
-    /* @end */
-}
 
 /* @end */

@@ -1,3 +1,16 @@
+New in 3.2.0.1 - Beta version.
+==============
+- UPD: Core and plugin pix.
+- UPD: TravisCI.
+- UPD: Unread messages language string.
+- UPD: For jQuery 3 needed to escape all '#'s and '"'s in the JS - ref: https://api.jquery.com/category/selectors/.
+- UPD: RTL LESS / CSS and see what can be removed as there is now a 'autoflipping' tool built in to Moodle.
+- UPD: Removed 'essential.css' from production minification so that PHP-RTLCSS comments are preserved and can be processed.
+- UPD: Improved logo to be responsive with different percentage widths for desktops and mobiles.
+- FIX: Social and app icon position in RTL.
+- FIX: Edit action menu icon hover background colour.
+- NEW: Issue #810: Switch role to.
+
 New in 3.1.1.8
 ==============
 - FIX: Issue #794: Hidden grade items in user report not clear as such.

@@ -18,6 +18,7 @@
  * Essential is a clean and customizable theme.
  *
  * @package     theme_essential
+ * @copyright   2017 Gareth J Barnard
  * @copyright   2016 Gareth J Barnard
  * @copyright   2014 Gareth J Barnard, David Bezemer
  * @copyright   2013 Julian Ridden
@@ -61,9 +62,9 @@ if (!$oldnavbar) {
         <div class="container-fluid">
             <div class="row-fluid">
                 <!-- HEADER: LOGO AREA -->
-                <div class="<?php echo (!$left) ? 'pull-right' : 'pull-left'; ?>">
 <?php
 if (!$haslogo) {
+    echo '<div class="pull-left">';
     $usesiteicon = \theme_essential\toolbox::get_setting('usesiteicon');
     $headertitle = $OUTPUT->get_title('header');
     if ($usesiteicon || $headertitle) {
@@ -79,7 +80,10 @@ if (!$haslogo) {
         echo '</a>';
     }
 } else {
-    echo '<a class="logo" href="'.preg_replace("(https?:)", "", $CFG->wwwroot).'" title="'.get_string('home').'"></a>';
+    echo '<div class="pull-left logo-container">';
+    echo '<a class="logo" href="'.preg_replace("(https?:)", "", $CFG->wwwroot).'" title="'.get_string('home').'">';
+    echo '<img src="'.\theme_essential\toolbox::get_setting('logo', 'format_file_url').'" class="img-responsive" />';
+    echo '</a>';
 }
 ?>
                 </div>
@@ -91,13 +95,13 @@ if (!$haslogo) {
                     <span class="icon-bar"></span>
                 </a>
 
-                <div id='essentialicons' class="collapse pull-<?php echo ($left) ? 'right' : 'left'; ?>">
+                <div id='essentialicons' class="collapse pull-right">
 <?php
 }
 // If true, displays the heading and available social links; displays nothing if false.
 if ($hassocialnetworks) {
 ?>
-                        <div class="pull-<?php echo ($left) ? 'right' : 'left'; ?>" id="socialnetworks">
+                        <div class="pull-right" id="socialnetworks">
                             <p id="socialheading"><?php echo get_string('socialnetworks', 'theme_essential') ?></p>
                             <ul class="socials unstyled">
                                 <?php
@@ -119,7 +123,7 @@ if ($hassocialnetworks) {
 }
                     // If true, displays the heading and available social links; displays nothing if false.
 if ($hasmobileapps) { ?>
-                        <div class="pull-<?php echo ($left) ? 'right' : 'left'; ?>" id="mobileapps">
+                        <div class="pull-right" id="mobileapps">
                             <p id="socialheading"><?php echo get_string('mobileappsheading', 'theme_essential') ?></p>
                             <ul class="socials unstyled">
                                 <?php

@@ -50,14 +50,14 @@
 /* @end */
 /* @group Autocomplete */
 .ui-autocomplete {
-  background-color: #ffffff;
+  background-color: #fff;
   border-color: [[setting:themecolor]];
   -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 .ui-autocomplete-loading {
-  background: #ffffff url('[[pix:i/loading_small]]') right center no-repeat;
+  background: white url('[[pix:i/loading_small]]') right center no-repeat;
 }
 .ui-autocomplete .ui-menu-item {
   color: [[setting:themetextcolor]];
@@ -199,12 +199,6 @@ p.tree_item.branch.emptybranch:focus:before {
 }
 .breadcrumb-nav ul.breadcrumb.style1 li:hover:after a {
   color: [[setting:themecolor]];
-}
-.dir-rtl .breadcrumb-nav ul.breadcrumb.style1 li:after {
-  border-right-color: [[setting:themecolor]];
-}
-.dir-rtl .breadcrumb-nav ul.breadcrumb.style1 li:hover:after {
-  border-right-color: [[setting:themenavcolor]];
 }
 /* @end */
 /* @group Breadcrumb Style Simple */
@@ -457,17 +451,21 @@ img.profilepicture {
   box-shadow: 0px 0px 3px [[setting:themecolor]];
 }
 .moodle-actionmenu[data-enhanced].show .menu {
-  background-color: #ffffff;
+  background-color: #fff;
 }
 .moodle-actionmenu[data-enhanced].show .menu a {
   color: [[setting:themeurlcolor]];
 }
 .moodle-actionmenu[data-enhanced].show .menu a:hover {
-  color: #ffffff;
+  color: #fff;
   background-color: [[setting:themeurlcolor]];
 }
 .moodle-actionmenu[data-enhanced].show .menu a:hover .fa:before {
-  color: #ffffff;
+  color: #fff;
+}
+.moodle-actionmenu[data-enhanced].show .menu a:hover img {
+  background-color: #fff;
+  border-radius: 4px;
 }
 /* @end */
 /* @group Course */
@@ -908,13 +906,12 @@ body#page-grade-grading-pick #region-main form #fgroup_id_buttonar label {
 #page-header {
   color: [[setting:headertextcolor]];
 }
-#page-header.logo {
-  height: [[setting:logoheight]];
-  max-height: [[setting:logoheight]];
-}
 #page-header.nologo {
   height: 52px;
   max-height: 52px;
+}
+#page-header .logo-container {
+  width: [[setting:logomobilewidth]]%;
 }
 #page-header h1#title {
   color: [[setting:headertextcolor]];
@@ -931,21 +928,16 @@ body#page-grade-grading-pick #region-main form #fgroup_id_buttonar label {
 #page-header .btn-icon .icon-bar {
   background-color: [[setting:themecolor]];
 }
-#page-header a.logo {
-  background-image: [[setting:logo]];
-  height: [[setting:logoheight]];
-  width: [[setting:logowidth]];
-}
-.dir-ltr #page-header div.titlearea {
+#page-header div.titlearea {
   border-left: 1px dotted [[setting:themecolor]];
-}
-.dir-rtl #page-header div.titlearea {
-  border-right: 1px dotted [[setting:themecolor]];
 }
 @media (min-width: 980px) {
   #page-header.nologo {
     height: 64px;
     max-height: 64px;
+  }
+  #page-header .logo-container {
+    width: [[setting:logodesktopwidth]]%;
   }
 }
 /* @end */
@@ -960,17 +952,11 @@ button.website:focus {
 .socials p {
   color: [[setting:headertextcolor]];
 }
-.dir-ltr #mobileapps {
+#mobileapps {
   border-right: 1px dotted [[setting:themecolor]];
-}
-.dir-rtl #mobileapps {
-  border-left: 1px dotted [[setting:themecolor]];
 }
 /* @end */
 /* @group Navbar */
-#essentialnavbar.oldnavbar.logo {
-  top: [[setting:logoheight]];
-}
 #essentialnavbar.oldnavbar.nologo {
   top: 52px;
 }
@@ -1012,23 +998,23 @@ button.website:focus {
   color: [[setting:themeurlcolor]];
 }
 .navbar .navbar-inner .nav > li.dropdown .dropdown-menu li > a:hover {
-  color: #ffffff;
+  color: #fff;
   background-color: [[setting:themeurlcolor]];
 }
 .navbar .navbar-inner .nav > li.dropdown .dropdown-menu li > a:focus,
 .navbar .navbar-inner .nav > li.dropdown .dropdown-menu li > a.open {
-  color: #ffffff;
+  color: #fff;
   background-color: [[setting:themeurlcolor]];
 }
 .navbar .navbar-inner .nav > li.dropdown .dropdown-menu li > a:focus .fa,
 .navbar .navbar-inner .nav > li.dropdown .dropdown-menu li > a.open .fa {
-  color: #ffffff;
+  color: #fff;
 }
 .navbar .navbar-inner .nav > li.dropdown .dropdown-menu li > a:hover .dimmed_text {
-  color: #eeeeee;
+  color: #eee;
 }
 .navbar .navbar-inner .nav > li.dropdown .dropdown-menu li.dropdown-submenu:hover > a {
-  color: #ffffff;
+  color: #fff;
   background-color: [[setting:themeurlcolor]];
 }
 .navbar .navbar-inner .nav > li.dropdown .dropdown-menu li.dropdown-submenu:hover > a .fa {
@@ -1037,7 +1023,7 @@ button.website:focus {
 .navbar .navbar-inner .nav li.dropdown.open > .dropdown-toggle,
 .navbar .navbar-inner .nav li.dropdown.active > .dropdown-toggle,
 .navbar .navbar-inner .nav li.dropdown.open.active > .dropdown-toggle {
-  color: #ffffff;
+  color: #fff;
   background-color: [[setting:themehovercolor]];
 }
 .navbar .navbar-inner .usermenu .dropdown img.userpicture {
@@ -1057,7 +1043,7 @@ button.website:focus {
 }
 .navbar .navbar-inner .messagemenu ul.nav .dropdown-menu li > a:hover .message,
 .navbar .navbar-inner .messagemenu ul.nav .dropdown-menu li > a:hover .notification {
-  color: #ffffff;
+  color: #fff;
   background-color: [[setting:themehovercolor]];
 }
 .navbar .navbar-inner .messagemenu ul.nav .dropdown-menu li > a:hover .message img.userpicture,
@@ -1066,12 +1052,19 @@ button.website:focus {
 .navbar .navbar-inner .messagemenu ul.nav .dropdown-menu li > a:hover .notification img.profilepicture {
   box-shadow: 0 0 3px [[setting:themenavcolor]];
 }
-.navbar-inner .nav .dropdown-menu .dropdown-submenu .dropdown-toggle:after {
+.dropdown-submenu > a:after {
   border-left-color: [[setting:themeiconcolor]];
 }
-.navbar-inner .nav .dropdown-menu .dropdown-submenu:focus .dropdown-toggle:after,
-.navbar-inner .nav .dropdown-menu .dropdown-submenu:hover .dropdown-toggle:after {
+.dropdown-submenu:focus > a:after,
+.dropdown-submenu:hover > a:after {
   border-left-color: [[setting:themenavcolor]];
+}
+.navbar .navbar-inner .usermenu .dropdown .dropdown-submenu > a:after {
+  border-right-color: [[setting:themeiconcolor]];
+}
+.navbar .navbar-inner .usermenu .dropdown .dropdown-submenu:focus > a:after,
+.navbar .navbar-inner .usermenu .dropdown .dropdown-submenu:hover > a:after {
+  border-right-color: [[setting:themenavcolor]];
 }
 @media (max-width: 979px) {
   .navbar .nav-collapse.in .nav .dropdown-submenu .dropdown-toggle:after,
@@ -1097,13 +1090,9 @@ button.website:focus {
   .navbar .nav-collapse.in .nav .dropdown-menu .dropdown-submenu:hover.open > a.dropdown-toggle:after {
     border-top-color: [[setting:themenavcolor]];
   }
-  .dir-ltr .navbar .nav-collapse.in .nav .dropdown-submenu .dropdown-toggle:after,
-  .dir-ltr .navbar .nav-collapse.in .nav .dropdown-menu .dropdown-submenu .dropdown-toggle:after {
+  .navbar .nav-collapse.in .nav .dropdown-submenu .dropdown-toggle:after,
+  .navbar .nav-collapse.in .nav .dropdown-menu .dropdown-submenu .dropdown-toggle:after {
     border-left-color: transparent;
-  }
-  .dir-rtl .navbar .nav-collapse.in .nav .dropdown-submenu .dropdown-toggle:after,
-  .dir-rtl .navbar .nav-collapse.in .nav .dropdown-menu .dropdown-submenu .dropdown-toggle:after {
-    border-right-color: transparent;
   }
 }
 .dropdownmenuscroll div.dropdown-menu > ul,
@@ -1184,7 +1173,7 @@ button.website:focus {
   color: [[setting:themetextcolor]];
 }
 .path-grade-report-grader .gradeparent .user.cell .userpicture {
-  background-color: #ffffff;
+  background-color: #fff;
 }
 table#explaincaps tbody > tr:nth-child(odd) > td,
 table#defineroletable tbody > tr:nth-child(odd) > td,
@@ -1704,7 +1693,7 @@ body .fa:hover {
   color: [[setting:themehovercolor]];
 }
 body .fa-inverse {
-  color: #ffffff;
+  color: #fff;
 }
 body .dimmed .fa {
   color: inherit;
@@ -1962,7 +1951,7 @@ h2.pagetitle {
 }
 .nav-tabs > li.active > a {
   color: [[setting:themetextcolor]];
-  background-color: #ffffff;
+  background-color: #fff;
 }
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
@@ -2047,7 +2036,7 @@ table#user-grades th.courseitem {
   border-right-color: [[setting:themecolor]];
 }
 .path-grade-report-grader .grade_icons img {
-  background-color: #ffffff;
+  background-color: #fff;
   padding: 3px;
   border-radius: 3px;
 }

@@ -87,26 +87,16 @@ iZone
 Anis Jradah
 Ute Hlasek, https://hlasek-it.de/moodle
 
-Essential for Moodle 3.1 kindly sponsored by
+Essential for Moodle 3.2 kindly sponsored by
 --------------------------------------------
-ClassroomRevolution, LLC -- Moodle Partner  
-Fernando Oliveira
-James Braastad
-Caleb Elcock
-Nadav Kavalerchik
+ClassroomRevolution, LLC -- Moodle Partner
+Daniel Méthot - e-learning-facile.com/formations/
+Floyd Saner, Learning Contexts, LLC
 Gemma Lesterhuis
 Mihai Bojonca, TCM International Institute
-Guido Hornig, lern.link
-Floyd Saner
-Nigel Barnett
-Donald Schwartz
-Joseph Thibault
-Kees Koopman
-Samuli Koskinen
-Dan Raij
-Gregory Reinert
-Jan Willem Knopper
-Toshimi Hatanaka
+
+If you are a valued sponsor and have not already told me, please could you state if you would like a credit here and if so what
+would you like.  Please contact via my 'Moodle profile' above.
 
 Customisation
 =============
@@ -116,11 +106,11 @@ above to discuss your requirements.
 
 Required version of Moodle
 ==========================
-This version works with Moodle 3.1 version 2016052300.00 (Build: 20160523) and above within the 3.1 branch until the
+This version works with Moodle 3.2 version 2016110800.00 (Build: 20161108) and above within the 3.2 branch until the
 next release.
 
 Please ensure that your hardware and software complies with 'Requirements' in 'Installing Moodle' on
-'docs.moodle.org/31/en/Installing_Moodle'.
+'docs.moodle.org/32/en/Installing_Moodle'.
 
 Installation
 ============

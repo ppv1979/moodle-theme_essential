@@ -364,13 +364,20 @@ class toolbox {
         return $slidecontent;
     }
 
-    static public function render_slide_controls() {
+    static public function render_slide_controls($left) {
         $strprev = get_string('prev');
         $strnext = get_string('next');
+        if ($left) {
+            $arrowprev = 'left';
+            $arrownext = 'right';
+        } else {
+            $arrowprev = 'right';
+            $arrownext = 'left';
+        }
         $prev = '<a class="left carousel-control" href="#essentialCarousel" data-slide="prev" aria-label="'.$strprev.'">';
-        $prev .= '<span aria-hidden="true" class="fa fa-chevron-circle-left"></span></a>';
+        $prev .= '<span aria-hidden="true" class="fa fa-chevron-circle-'.$arrowprev.'"></span></a>';
         $next = '<a class="right carousel-control" href="#essentialCarousel" data-slide="next" aria-label="'.$strnext.'">';
-        $next .= '<span aria-hidden="true" class="fa fa-chevron-circle-right"></span></a>';
+        $next .= '<span aria-hidden="true" class="fa fa-chevron-circle-'.$arrownext.'"></span></a>';
 
         return $prev . $next;
     }
@@ -725,37 +732,6 @@ class toolbox {
         $tag = '[[setting:customcss]]';
         $replacement = $customcss;
         $css = str_replace($tag, $replacement, $css);
-        return $css;
-    }
-
-    static public function set_logo($css, $logo) {
-        $tag = '[[setting:logo]]';
-        if (!($logo)) {
-            $replacement = 'none';
-        } else {
-            $replacement = 'url(\''.$logo.'\')';
-        }
-        $css = str_replace($tag, $replacement, $css);
-        return $css;
-    }
-
-    static public function set_logodimensions($css, $logowidth, $logoheight) {
-        $tag = '[[setting:logowidth]]';
-        if (!($logowidth)) {
-            $replacement = '65px';
-        } else {
-            $replacement = $logowidth;
-        }
-        $css = str_replace($tag, $replacement, $css);
-
-        $tag = '[[setting:logoheight]]';
-        if (!($logoheight)) {
-            $replacement = '65px';
-        } else {
-            $replacement = $logoheight;
-        }
-        $css = str_replace($tag, $replacement, $css);
-
         return $css;
     }
 

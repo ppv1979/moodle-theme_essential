@@ -68,27 +68,13 @@ click here to sponsor.
 </ul>
 </p>
 <p>
-<h3>Essential for Moodle 3.0 kindly sponsored by:</h3>
+<h3>Essential for Moodle 3.2 kindly sponsored by:</h3>
 <ul>
-<li>Leila Hiret</li>
-<li>Vilar da Camara Neto</li>
-<li>Kees Koopman</li>
-<li>Matej Topolovec</li>
-<li>Mihai Bojonca</li>
-<li>V. Y. S. Cavalcanti</li>
-<li>Christian Kleinhanss</li>
-<li>Nadav Kavalerchik</li>
-<li>Francisco Gomez Gonzalez</li>
-<li>Lazar Ivanov</li>
-<li>Duval Arnaud</li>
-<li>Kai ner Maa Pitanta</li>
-<li>Gregory Reinert</li>
-<li>M van der Niet</li>
-<li>Floyd Saner</li>
-<li>Andreas Schenkel</li>
+<li>ClassroomRevolution, LLC -- Moodle Partner</li>
+<li>Daniel Méthot - e-learning-facile.com/formations/</li>
+<li>Floyd Saner, Learning Contexts, LLC</li>
 <li>Gemma Lesterhuis</li>
-<li>Roy Bentley</li>
-<li>Duane Cox</li>
+<li>Mihai Bojonca, TCM International Institute</li>
 </ul>
 </p>
 <h3>Customisation</h3>
@@ -176,19 +162,15 @@ $string['pagebottomblocksperrow'] = 'Page bottom blocks per row';
 $string['pagebottomblocksperrowdesc'] = 'State up to how many blocks per row between {$a->lower} and {$a->upper} for pages with \'Page bottom blocks\'.  Current pages are: Admin, Course management, Grading and Quiz edit.';
 
 $string['logo'] = 'Logo';
-$string['logodesc'] = 'Please upload your custom logo here if you want to add it to the header.<br>The image should be the same width and height as the \'Logo width\' and \'Logo height\' settings below.<br>If you upload a logo it will replace the standard icon and name that was displayed by default.';
+$string['logodesc'] = 'Please upload your custom logo here if you want to add it to the header.<br>The image will be scaled to fit into the available percentage width specified for the device below.  This gives a responsive solution.  If you have a lot of social / app icons then do double check the result.<br>If you upload a logo it will replace the standard icon and name that was displayed by default.';
 
-$string['logowidth'] = 'Logo width';
-$string['logowidthdesc'] = 'The width of the logo image.  This can be specified in \'px\' or \'em\', e.g. \'96px\'.';
+$string['logodesktopwidth'] = 'Logo desktop width';
+$string['logodesktopwidthdesc'] = 'The width of the logo image container on a desktop, >= 980px.<br>Please state as a percentage of the available space between {$a->lower} and {$a->upper}.<br>The available space is the width allowed by the \'pagewidth\' setting.  The image will fill the stated percentage up to its resolution width.';
 
-$string['logoheight'] = 'Logo height';
-$string['logoheightdesc'] = 'The height of the logo image.  This can be specified in \'px\' or \'em\', e.g. \'24px\'.';
+$string['logomobilewidth'] = 'Logo mobile width';
+$string['logomobilewidthdesc'] = 'The width of the logo image container on a mobile, < 980px.<br>Please state as a percentage of the available space between {$a->lower} and {$a->upper}.<br>The available space is the width allowed by the \'pagewidth\' setting.  The image will fill the stated percentage up to its resolution width.';
 
 $string['logodimerror'] = ' is invalid.  Please state \'px\' or \'em\' immediately after the unit value and nothing before the unit value.';
-
-$string['credit'] = 'The {$a->name} theme for Moodle is developed by ';
-$string['download'] = 'Go to the download page';
-$string['aboutme'] = 'About me';
 
 $string['profilebarcustomtitle'] = 'Profile bar custom block title';
 $string['profilebarcustomtitledesc'] = 'Title for custom profile bar block.';
@@ -923,8 +905,9 @@ $string['versionalerttext1'] = 'Theme not designed for Moodle version.';
 $string['versionalerttext2'] = 'Unexpected issues may occur, please get the correct theme version for your Moodle version.';
 
 // Message Menu.
-$string['unreadnewnotification'] = 'New notification';
 $string['nomessagesfound'] = 'No messages were found';
+$string['unreadmessages'] = 'Unread messages ({$a})';
+$string['unreadnewnotification'] = 'New notification';
 
 // Preferences.
 $string['badgepreferences'] = 'Badge';

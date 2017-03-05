@@ -191,7 +191,7 @@ class core_renderer extends \core_renderer {
         $footer = str_replace($this->unique_end_html_token, $this->page->requires->get_end_code(), $footer);
         $this->page->set_state(moodle_page::STATE_DONE);
         $info = '<!-- Essential theme version: '.$this->page->theme->settings->version.
-            ', developed, enhanced and maintained by Gareth J Barnard: about.me/gjbarnard -->';
+            'is developed by Gareth J Barnard: about.me/gjbarnard -->';
 
         return $output . $footer . $info;
     }
@@ -214,21 +214,13 @@ class core_renderer extends \core_renderer {
             if (!$called) {
                 $markup = html_writer::start_tag('div', array('class' => 'row-fluid'));
 
-                if ($this->left) {
-                    $markup .= html_writer::start_tag('div', array('class' => 'span8'));
-                    $markup .= $heading;
-                    $markup .= html_writer::end_tag('div');
-                }
+                $markup .= html_writer::start_tag('div', array('class' => 'span8'));
+                $markup .= $heading;
+                $markup .= html_writer::end_tag('div');
 
                 $markup .= html_writer::start_tag('div', array('class' => 'span4 heading-rts'));
                 $markup .= $this->return_to_section();
                 $markup .= html_writer::end_tag('div');
-
-                if (!$this->left) {
-                    $markup .= html_writer::start_tag('div', array('class' => 'span8'));
-                    $markup .= $heading;
-                    $markup .= html_writer::end_tag('div');
-                }
 
                 $markup .= html_writer::end_tag('div');
                 $called = true;
@@ -580,7 +572,7 @@ class core_renderer extends \core_renderer {
                     $url = $menunode->get_url();
                     $class = $url->get_param('essentialcolours');
                 } else {
-                    $url = '#';
+                    $url = $this->page->url;
                 }
                 $content .= html_writer::link($url, $menunode->get_text(), array('title' => $menunode->get_title(),
                     'class' => $class));
@@ -615,7 +607,7 @@ class core_renderer extends \core_renderer {
             } else {
                 $currentlang = $strlang;
             }
-            $this->language = $langmenu->add($this->getfontawesomemarkup('flag').$currentlang, new moodle_url('#'), $strlang, 100);
+            $this->language = $langmenu->add($this->getfontawesomemarkup('flag').$currentlang, $this->page->url, $strlang, 100);
             foreach ($langs as $langtype => $langname) {
                 $this->language->add($this->getfontawesomemarkup('language').$langname, new moodle_url($this->page->url,
                     array('lang' => $langtype)), $langname);
@@ -682,7 +674,7 @@ class core_renderer extends \core_renderer {
                 $branchtitle = get_string('my'.$lateststring.'courses', 'theme_essential');
             }
             $branchlabel = $this->getfontawesomemarkup('briefcase').$branchtitle;
-            $branchurl = new moodle_url('#');
+            $branchurl = $this->page->url;
             $branchsort = 200;
 
             $coursemenubranch = $coursemenu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
@@ -826,7 +818,7 @@ class core_renderer extends \core_renderer {
                                 $caticon = 'folder-open';
                             }
                             $catlabel = html_writer::tag('span', $this->getfontawesomemarkup($caticon).html_writer::tag('span', ' '.$cattext));
-                            $mycoursescatsubmenucats[$categoriestoplist[$course->category]->topid] = $coursemenubranch->add($catlabel, new moodle_url('#'), $cattext);
+                            $mycoursescatsubmenucats[$categoriestoplist[$course->category]->topid] = $coursemenubranch->add($catlabel, $this->page->url, $cattext);
                             $mycoursescatsubmenucatsnumcourses[$categoriestoplist[$course->category]->topid] = 0;
                         }
                         if ($mycoursescatsubmenucatsnumcourses[$categoriestoplist[$course->category]->topid] < $mycoursesmax) {
@@ -847,7 +839,7 @@ class core_renderer extends \core_renderer {
             }
             if ($numcourses == 0) {
                 $noenrolments = get_string('noenrolments', 'theme_essential');
-                $coursemenubranch->add('<em>' . $noenrolments . '</em>', new moodle_url('#'), $noenrolments);
+                $coursemenubranch->add('<em>' . $noenrolments . '</em>', $this->page->url, $noenrolments);
             }
             return $this->render_the_custom_menu($coursemenu, 'custom_menu_courses', $mycoursescatsubmenu);
         }
@@ -906,7 +898,7 @@ class core_renderer extends \core_renderer {
             if (!empty($alternativethemes)) {
                 $branchtitle = get_string('themecolors', 'theme_essential');
                 $branchlabel = $this->getfontawesomemarkup('th-large'). $branchtitle;
-                $branchurl = new moodle_url('#');
+                $branchurl = $this->page->url;
                 $branchsort = 300;
                 $branch = $colourmenu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
 
@@ -943,7 +935,7 @@ class core_renderer extends \core_renderer {
                 $activitystreammenu = new custom_menu();
                 $branchtitle = get_string('thiscourse', 'theme_essential');
                 $branchlabel = $this->getfontawesomemarkup('book').$branchtitle;
-                $branchurl = new moodle_url('#');
+                $branchurl = $this->page->url;
                 $branch = $activitystreammenu->add($branchlabel, $branchurl, $branchtitle, 10002);
                 $branchtitle = get_string('people', 'theme_essential');
                 $branchlabel = $this->getfontawesomemarkup('users').$branchtitle;
@@ -1058,7 +1050,7 @@ class core_renderer extends \core_renderer {
             } else {
                 $messagemenuicon = $this->getfontawesomemarkup('envelope');
             }
-            $messagetitle = get_string('unreadmessages', 'message', $messages['newmessages']);
+            $messagetitle = get_string('unreadmessages', 'theme_essential', $messages['newmessages']);
 
             $messagemenutext = html_writer::tag('span', $messages['newmessages']) . $messagemenuicon;
             $messagesubmenu = $messagemenu->add(
@@ -1410,17 +1402,14 @@ class core_renderer extends \core_renderer {
                 $usermenu .= html_writer::link($loginurl, $userpic, array('class' => 'loginurl'));
             }
         } else if (isguestuser()) {
-            $userurl = new moodle_url('#');
+            $userurl = $this->page->url;
             $userpic = parent::user_picture($USER, array('link' => false, 'size' => 64));
             $caret = $this->getfontawesomemarkup('caret-right');
             $userclass = array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown');
             $usermenu .= html_writer::link($userurl, $userpic.get_string('guest').$caret, $userclass);
 
             // Render direct login link.
-            $classes = 'dropdown-menu';
-            if ($this->left) {
-                $classes .= ' pull-right';
-            }
+            $classes = 'dropdown-menu pull-right';
             $usermenu .= html_writer::start_tag('ul', array('class' => $classes));
             $branchlabel = '<em>'.$this->getfontawesomemarkup('sign-in').get_string('login').'</em>';
             $branchurl = new moodle_url('/login/index.php');
@@ -1436,22 +1425,38 @@ class core_renderer extends \core_renderer {
             $context = context_course::instance($course->id);
 
             // Output Profile link.
-            $userurl = new moodle_url('#');
-            $userpic = parent::user_picture($USER, array('link' => false, 'size' => 64));
-            $caret = $this->getfontawesomemarkup('caret-right');
-            $userclass = array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown');
-
-            if (!empty($USER->alternatename)) {
-                $usermenu .= html_writer::link($userurl, $userpic.$USER->alternatename.$caret, $userclass);
+            $rolemenuitem = null;
+            $rolename = null;
+            if (\is_role_switched($course->id)) { // Has switched roles.
+                if ($role = $DB->get_record('role', array('id' => $USER->access['rsw'][$context->path]))) {
+                    $branchlabel = '<em>'.$this->getfontawesomemarkup('user').get_string('switchrolereturn').'</em>';
+                    $branchurl = new moodle_url('/course/switchrole.php', array('id' => $course->id, 'sesskey' => sesskey(),
+                        'switchrole' => 0, 'returnurl' => $this->page->url->out_as_local_url(false)));
+                    $rolemenuitem = html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
+                    $rolename = ' - '.role_get_name($role, $context);
+                }
             } else {
-                $usermenu .= html_writer::link($userurl, $userpic.$USER->firstname.$caret, $userclass);
+                $roles = \get_switchable_roles($context);
+                if (is_array($roles) && (count($roles) > 0)) {
+                    $branchlabel = '<em>'.$this->getfontawesomemarkup('users').get_string('switchroleto').'</em>';
+                    $branchurl = new moodle_url('/course/switchrole.php', array('id' => $course->id,
+                        'switchrole' => -1, 'returnurl' => $this->page->url->out_as_local_url(false)));
+                    $rolemenuitem = html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
+                }
             }
+
+            $username = parent::user_picture($USER, array('link' => false, 'size' => 64));
+            if (!empty($USER->alternatename)) {
+                $username .= $USER->alternatename;
+            } else {
+                $username .= $USER->firstname;
+            }
+            $username .= $this->getfontawesomemarkup('caret-right');
+            $usermenu .= html_writer::link($this->page->url, $username,
+                array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown'));
 
             // Start dropdown menu items.
-            $classes = 'dropdown-menu';
-            if ($this->left) {
-                $classes .= ' pull-right';
-            }
+            $classes = 'dropdown-menu pull-right';
             $usermenu .= html_writer::start_tag('ul', array('class' => $classes));
 
             if (\core\session\manager::is_loggedinas()) {
@@ -1459,7 +1464,11 @@ class core_renderer extends \core_renderer {
                 $branchlabel = '<em>'.$this->getfontawesomemarkup('key').fullname($realuser, true).
                     get_string('loggedinas', 'theme_essential').fullname($USER, true).'</em>';
             } else {
-                $branchlabel = '<em>'.$this->getfontawesomemarkup('user').fullname($USER, true).'</em>';
+                $username = fullname($USER, true);
+                if ($rolename) {
+                    $username .= $rolename;
+                }
+                $branchlabel = '<em>'.$this->getfontawesomemarkup('user').$username.'</em>';
             }
             $branchurl = new moodle_url('/user/profile.php', array('id' => $USER->id));
             $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
@@ -1471,11 +1480,8 @@ class core_renderer extends \core_renderer {
                 $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
             }
 
-            if (is_role_switched($course->id)) { // Has switched roles.
-                $branchlabel = '<em>'.$this->getfontawesomemarkup('users').get_string('switchrolereturn').'</em>';
-                $branchurl = new moodle_url('/course/switchrole.php', array('id' => $course->id, 'sesskey' => sesskey(),
-                    'switchrole' => 0, 'returnurl' => $this->page->url->out_as_local_url(false)));
-                $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
+            if ($rolemenuitem) {
+                $usermenu .= $rolemenuitem;
             }
 
             // Add preferences submenu.
@@ -1633,7 +1639,7 @@ class core_renderer extends \core_renderer {
         global $USER, $CFG;
         $label = '<em>'.$this->getfontawesomemarkup('cog').get_string('preferences').'</em>';
         $preferences = html_writer::start_tag('li', array('class' => 'dropdown-submenu preferences'));
-        $preferences .= html_writer::link(new moodle_url('#'), $label,
+        $preferences .= html_writer::link($this->page->url, $label,
             array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown'));
         $preferences .= html_writer::start_tag('ul', array('class' => 'dropdown-menu'));
 
@@ -1730,14 +1736,13 @@ class core_renderer extends \core_renderer {
             'docs' => 'question-circle',
             'generate' => 'gift',
             'help' => 'question-circle-o',
-            'i/marker' => 'lightbulb-o',
+            'i/backup' => 'cloud-download',
+            'i/badge' => 'trophy',
+            'i/checkpermissions' => 'user',
+            'i/cohort' => 'users',
+            'i/competencies' => 'wifi fa-flip-vertical',
             'i/delete' => 'times-circle',
             'i/dragdrop' => 'arrows',
-            'i/loading' => 'refresh fa-spin fa-2x',
-            'i/loading_small' => 'refresh fa-spin',
-            'i/backup' => 'cloud-download',
-            'i/checkpermissions' => 'user',
-            'i/competencies' => 'wifi fa-flip-vertical',
             'i/edit' => 'pencil',
             'i/enrolusers' => 'user-plus',
             'i/filter' => 'filter',
@@ -1748,6 +1753,9 @@ class core_renderer extends \core_renderer {
             'i/groups' => 'user-secret',
             'i/hide' => 'eye',
             'i/import' => 'upload',
+            'i/loading' => 'refresh fa-spin fa-2x',
+            'i/loading_small' => 'refresh fa-spin',
+            'i/marker' => 'lightbulb-o',
             'i/move_2d' => 'arrows',
             'i/navigationitem' => 'file',
             'i/outcomes' => 'magic',
@@ -1758,16 +1766,12 @@ class core_renderer extends \core_renderer {
             'i/restore' => 'cloud-upload',
             'i/return' => 'repeat',
             'i/roles' => 'user',
-            'i/cohort' => 'users',
             'i/scales' => 'signal',
             'i/settings' => 'cogs',
             'i/show' => 'eye-slash',
             'i/switchrole' => 'random',
             'i/user' => 'user',
             'i/users' => 'user',
-            't/right' => 'arrow-right',
-            't/left' => 'arrow-left',
-            't/edit_menu' => 'cogs',
             'i/withsubcat' => 'indent',
             'i/permissions' => 'key',
             'i/assignroles' => 'lock',
@@ -1779,9 +1783,12 @@ class core_renderer extends \core_renderer {
             't/down' => 'arrow-down',
             't/edit' => 'cog',
             't/editstring' => 'pencil-square-o',
+            't/edit_menu' => 'cogs',
             't/grades' => 'th-list',
             't/hide' => 'eye',
+            't/left' => 'arrow-left',
             't/preview' => 'search',
+            't/right' => 'arrow-right',
             't/show' => 'eye-slash',
             't/sort' => 'sort',
             't/sort_asc' => 'sort-asc',
@@ -2119,19 +2126,6 @@ class core_renderer extends \core_renderer {
         return $output;
     }
 
-    public function standard_footer_html() {
-        $output = parent::standard_footer_html();
-        $output .= html_writer::start_tag('div', array ('class' => 'themecredit')).
-            get_string('credit', 'theme_essential',
-            array('name' => html_writer::link('https://moodle.org/plugins/theme_essential', 'Essential', array(
-                'target' => '_blank',
-                'title' => get_string('download', 'theme_essential'))))).
-            html_writer::link('//about.me/gjbarnard', 'Gareth J Barnard', array(
-                'target' => '_blank', 'title' => get_string('aboutme', 'theme_essential'))).html_writer::end_tag('div');
-
-        return $output;
-    }
-
     // Essential custom bits.
     public function essential_marketing_button($spot) {
         $o = '';
@@ -2398,9 +2392,9 @@ class core_renderer extends \core_renderer {
         global $CFG;
         $result = '';
 
-        if (($CFG->version < 2016052300.00) || ($CFG->version >= 2016111400.00)) {
+        if (($CFG->version < 2016120500.00) || ($CFG->version >= 2016122200.00)) {
             $result = '<div class="useralerts alert alert-error">';
-            $result .= '<a class="close" data-dismiss="alert" href="#">'.$this->getfontawesomemarkup('times-circle').'</a>';
+            $result .= '<a class="close" data-dismiss="alert" href="'.$this->page->url.'">'.$this->getfontawesomemarkup('times-circle').'</a>';
             $result .= $this->getfontawesomemarkup('stack', array(), array(), $this->getfontawesomemarkup('square',
                 array('fa-stack-2x')).$this->getfontawesomemarkup('warning', array('fa-stack-1x', 'fa-inverse')));
             $result .= '<span class="title">'.get_string('versionalerttitle', 'theme_essential').'</span><br />'.
