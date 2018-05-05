@@ -43,9 +43,6 @@ echo $OUTPUT->doctype();
     <?php require_once(\theme_essential\toolbox::get_tile_file('fonts')); ?>
     <!-- iOS Homescreen Icons -->
     <?php require_once(\theme_essential\toolbox::get_tile_file('iosicons')); ?>
-    <!-- Start Analytics -->
-    <?php require_once(\theme_essential\toolbox::get_tile_file('analytics')); ?>
-    <!-- End Analytics -->
 </head>
 
 <body <?php echo $OUTPUT->body_attributes($bodyclasses); ?>>
@@ -80,9 +77,10 @@ if (!$haslogo) {
         echo '</a>';
     }
 } else {
+    $home = get_string('home');
     echo '<div class="pull-left logo-container">';
-    echo '<a class="logo" href="'.preg_replace("(https?:)", "", $CFG->wwwroot).'" title="'.get_string('home').'">';
-    echo '<img src="'.\theme_essential\toolbox::get_setting('logo', 'format_file_url').'" class="img-responsive" />';
+    echo '<a class="logo" href="'.preg_replace("(https?:)", "", $CFG->wwwroot).'" title="'.$home.'">';
+    echo '<img src="'.\theme_essential\toolbox::get_setting('logo', 'format_file_url').'" class="img-responsive" alt="'.$home.'" />';
     echo '</a>';
 }
 ?>
@@ -102,7 +100,7 @@ if (!$haslogo) {
 if ($hassocialnetworks) {
 ?>
                         <div class="pull-right" id="socialnetworks">
-                            <p id="socialheading"><?php echo get_string('socialnetworks', 'theme_essential') ?></p>
+                            <p class="socialheading"><?php echo get_string('socialnetworks', 'theme_essential') ?></p>
                             <ul class="socials unstyled">
                                 <?php
                                 echo $OUTPUT->render_social_network('googleplus');
@@ -124,7 +122,7 @@ if ($hassocialnetworks) {
                     // If true, displays the heading and available social links; displays nothing if false.
 if ($hasmobileapps) { ?>
                         <div class="pull-right" id="mobileapps">
-                            <p id="socialheading"><?php echo get_string('mobileappsheading', 'theme_essential') ?></p>
+                            <p class="socialheading"><?php echo get_string('mobileappsheading', 'theme_essential') ?></p>
                             <ul class="socials unstyled">
                                 <?php
                                 echo $OUTPUT->render_social_network('ios');

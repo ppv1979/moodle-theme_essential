@@ -2,7 +2,7 @@
 @import "../fontawesome/variables";
 
 .block {
-    background: white;
+    background-color: @white;
     padding: @borderRadiusLarge;
     border: 1px solid darken(@wellBackground, 7%);
     .border-radius(@borderRadiusLarge);
@@ -11,39 +11,23 @@
     }
     .moodle-actionmenu[data-enhanced].show .menu a:hover {
         text-decoration: none;
-        &:before {
-            color: @white;
-        }
-    }
-    .moodle-core-dragdrop-draghandle {
-        &:before {
-            font-family: 'FontAwesome';
-            content: "\f047";
-            cursor: move;
-        }
-        img {
-            display: none;
-        }
-    }
-    li.item_with_icon > p img {
-        position: static !important;
     }
     .icon {
         margin-right: 5px;
     }
-    .moodle-core-dragdrop-draghandle {
-        &:before {
-            margin-right: 5px;
-        }
-    }
-    li.item_with_icon > p img {
-        margin-right: 5px;
+}
+
+.block.block_flat_navigation {
+    background-color: transparent;
+    .list-group-item {
+        background-color: @white;
     }
 }
 
 body:not(.tabletdevice) {
     // Correctly span the main element when no blocks are present.
-    &.empty-region-side-pre #main-and-pre #content, &.empty-region-side-post #main-and-pre {
+    &.empty-region-side-pre #main-and-pre #content,
+    &.empty-region-side-post #main-and-pre {
         width: 100%;
     }
 
@@ -93,7 +77,8 @@ body:not(.tabletdevice) {
     @media (max-width: 767px) {
         &.empty-region-side-post.used-region-side-pre {
             #main-and-pre {
-                #content, #block-region-side-pre {
+                #content,
+                #block-region-side-pre {
                     width: 100%;
                 }
             }
@@ -134,14 +119,15 @@ body:not(.tabletdevice) {
 }
 
 .pagelayout-frontpage {
-    .frontpagecontent, #marketing-spots {
+    .frontpagecontent,
+    #marketing-spots {
         margin-bottom: 20px;
     }
 }
 
 p.tree_item.leaf a {
     > .@{fa-css-prefix} {
-        width: 14px;
+        width: 16px;
     }
     &.action-delete {
         > .@{fa-css-prefix} {
@@ -155,10 +141,11 @@ p.tree_item.leaf a {
 
     &:before {
         font-family: FontAwesome;
-        margin-right: 5px;
+        font-size: 16px;
+        margin-right: 4px;
     }
     &.emptybranch:before {
-        margin-right: 5px;
+        margin-right: 4px;
     }
     &[aria-expanded="false"]:before {
         content: "\f07b";
@@ -180,21 +167,29 @@ p.tree_item.leaf a {
     }
 
     li.type_unknown.depth_1 > .tree_item.branch:before {
-      content: "\f015";
+        content: "\f015";
     }
 }
 
-.block_navigation.block .block_tree .tree_item {
-    &.branch {
-        padding-left: 0;
-    }
-    &.hasicon .item-content-wrap {
-        display: inline !important;
+.block_navigation,
+.block_settings {
+    .block_tree .tree_item {
+        &.branch {
+            padding-left: 0;
+        }
+        &.hasicon .item-content-wrap {
+            display: inline !important;
+        }
     }
 }
 
-.jsenabled .block_settings .block_tree .tree_item {
-    padding-left: 0 !important;
+.block.block_flat_navigation {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin-bottom: 0;
+    min-height: 0;
+    padding: 0;
 }
 
 .jsenabled .block_settings .block_tree .tree_item.branch.loadingbranch:before {
@@ -255,13 +250,13 @@ p.tree_item.leaf a {
 .hidden-blocks {
     background: #ffe1e1;
     padding: 10px;
-    border: 1px solid #EEE;
+    border: 1px solid #eee;
     border-radius: 5px;
     margin: 10px 0 10px 0;
 
     h4 {
         border-bottom: 1px solid #ccc;
-        color: #ff6666;
+        color: #f66;
         margin-bottom: 8px;
         margin-top: 0;
         padding-bottom: 8px;
@@ -286,7 +281,7 @@ p.tree_item.leaf a {
 }
 
 .block .header .title {
-    border-bottom: 1px solid #EEE;
+    border-bottom: 1px solid #eee;
     padding-left: 0;
     h2 {
         display: inline;
@@ -334,7 +329,7 @@ p.tree_item.leaf a {
             text-decoration: none;
         }
         li {
-            border-bottom: 1px dotted #E1E1E1;
+            border-bottom: 1px dotted #e1e1e1;
             padding: 5px;
             &:hover {
                 background: #f9f9f9;
@@ -359,7 +354,8 @@ p.tree_item.leaf a {
 
 /* @group Calendar Block */
 .block .minicalendar {
-    th, td {
+    th,
+    td {
         word-break: break-word;
     }
 }
@@ -409,7 +405,7 @@ p.tree_item.leaf a {
         form input[type="submit"],
         .footer a {
             background-image: none;
-            border-color: #30ADD1;
+            border-color: #30add1;
             border-image: none;
             border-radius: 4px;
             border-style: solid;
@@ -420,11 +416,11 @@ p.tree_item.leaf a {
             display: inline-block;
             font-size: 13px;
             line-height: 20px;
+            margin: 10px 0;
             padding: 4px 12px;
             text-align: center;
             text-shadow: none;
             vertical-align: middle;
-            margin: 10px 0;
             width: 100%;
         }
         form input[type="submit"]:hover,

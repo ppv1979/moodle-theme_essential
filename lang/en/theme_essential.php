@@ -18,6 +18,7 @@
  * Essential is a clean and customizable theme.
  *
  * @package     theme_essential
+ * @copyright   2017 Gareth J Barnard
  * @copyright   2016 Gareth J Barnard
  * @copyright   2015 Gareth J Barnard
  * @copyright   2014 Gareth J Barnard, David Bezemer
@@ -50,10 +51,6 @@ Gareth J. Barnard<br>
 <p>This theme is provided to you for free, and if you want to express your gratitude for using this theme, please consider sponsoring by:
 <h4>PayPal</h4>
 <p>Please contact me via my <a href="http://moodle.org/user/profile.php?id=442195" target="_blank">\'Moodle profile\'</a> for details as I am an individual and therefore am unable to have \'buy me now\' buttons under their terms.</p>
-<h4>Flattr</h4>
-<a href="https://flattr.com/profile/gjb2048" target="_blank">
-click here to sponsor.
-</a>
 <br>Sponsorships help to facilitate maintenance and allow me to provide you with more and better features.  Without your support the theme cannot be maintained.</p>
 <p>
 <h3>Sponsors</h3>
@@ -68,7 +65,7 @@ click here to sponsor.
 </ul>
 </p>
 <p>
-<h3>Essential for Moodle 3.2 kindly sponsored by:</h3>
+<h3>Essential for Moodle 3.3 kindly sponsored by:</h3>
 <ul>
 <li>ClassroomRevolution, LLC -- Moodle Partner</li>
 <li>Daniel Méthot - e-learning-facile.com/formations/</li>
@@ -131,19 +128,30 @@ $string['sponsor_title'] = 'Sponsor Essential';
 $string['sponsor_desc'] = 'Please sponsor via PayPal by contacting me via my \'';
 $string['sponsor_desc2'] = ' to keep the Essential development going, or simply to express your gratitude.';
 $string['paypal_desc'] = '{$a->url}\' for details as I am an individual and therefore am unable to have \'buy me now\' buttons under their terms or ';
-$string['flattr_desc'] = '{$a->url}';
 $string['paypal_click'] = 'Moodle profile';
-$string['flattr_click'] = 'sponsor via Flattr';
 
 // Readme.
 $string['readme_title'] = 'Essential read-me';
 $string['readme_desc'] = 'Please {$a->url} file, which contains more information about the Essential theme including customisation.';
 $string['readme_click'] = 'click here for the README.txt';
 
+// Advert.
+$string['advert_heading'] = 'Theme Design Level 1';
+$string['advert_tagline'] = 'Want to know how to customise themes, but do not have a background in development, experience with php, and experience with Moodle Themes, then \'MoodleBites Theme Design Level 1\' is for you!  It will give you a gentle introduction to Moodle Theme development, and provide a good grounding should you wish to progress further.  Please click here for more information.';
+$string['advert_alttext'] = 'Theme Design Level 1 advertising banner';
+
 // General settings.
 $string['genericsettings'] = 'General';
 $string['generalheadingsub'] = 'General settings';
 $string['generalheadingdesc'] = 'Configure the general settings for the theme here.';
+
+$string['flatnavigation'] = 'Enable flat navigation.';
+$string['flatnavigationdesc'] = 'If enabled flat navigation will be used instead of the navigation and settings blocks.';
+$string['coursesettingstitle'] = 'Course settings';
+$string['coursecategorysettingstitle'] = 'Course category settings';
+$string['frontpagesettingstitle'] = 'Frontpage settings';
+$string['modulesettingstitle'] = 'Module settings';
+$string['usersettingstitle'] = 'User settings';
 
 $string['pagebackground'] = 'Page background image';
 $string['pagebackgrounddesc'] = 'Upload your own background image.  Select the style of the image below.';
@@ -165,10 +173,10 @@ $string['logo'] = 'Logo';
 $string['logodesc'] = 'Please upload your custom logo here if you want to add it to the header.<br>The image will be scaled to fit into the available percentage width specified for the device below.  This gives a responsive solution.  If you have a lot of social / app icons then do double check the result.<br>If you upload a logo it will replace the standard icon and name that was displayed by default.';
 
 $string['logodesktopwidth'] = 'Logo desktop width';
-$string['logodesktopwidthdesc'] = 'The width of the logo image container on a desktop, >= 980px.<br>Please state as a percentage of the available space between {$a->lower} and {$a->upper}.<br>The available space is the width allowed by the \'pagewidth\' setting.  The image will fill the stated percentage up to its resolution width.';
+$string['logodesktopwidthdesc'] = 'The width of the logo image container on a desktop, >= 980px.<br>Please state as a percentage of the available space between {$a->lower} and {$a->upper}.<br>The available space is the width allowed by the \'pagewidth\' setting.  The image will fill the stated percentage up to its resolution width.<br>Note:  The minimum height of the container is 64 pixels, so there will be a bottom gap if the image height is calculated to be less.';
 
 $string['logomobilewidth'] = 'Logo mobile width';
-$string['logomobilewidthdesc'] = 'The width of the logo image container on a mobile, < 980px.<br>Please state as a percentage of the available space between {$a->lower} and {$a->upper}.<br>The available space is the width allowed by the \'pagewidth\' setting.  The image will fill the stated percentage up to its resolution width.';
+$string['logomobilewidthdesc'] = 'The width of the logo image container on a mobile, < 980px.<br>Please state as a percentage of the available space between {$a->lower} and {$a->upper}.<br>The available space is the width allowed by the \'pagewidth\' setting.  The image will fill the stated percentage up to its resolution width.<br>Note:  The minimum height of the container is 52 pixels, so there will be a bottom gap if the image height is calculated to be less.';
 
 $string['logodimerror'] = ' is invalid.  Please state \'px\' or \'em\' immediately after the unit value and nothing before the unit value.';
 
@@ -237,7 +245,6 @@ $string['helplinktypedesc'] = 'Choose whether you want to enable a help option i
 $string['helplink'] = 'Help link';
 $string['helplinkdesc'] = 'If you chose URL above fill in the complete URL to your help site (must include http:// or https://). If you chose Email address fill in your email address.';
 
-$string['few'] = 'A few ';
 $string['usermenu'] = 'User menu';
 $string['usermenudesc'] = 'The menu for the user.';
 $string['loggedinas'] = ' logged in as ';
@@ -276,6 +283,11 @@ $string['floatingsubmitbuttonsdesc'] = 'Have a \'floating\' area that contains t
 
 $string['layout'] = 'Use a standard course layout';
 $string['layoutdesc'] = 'This theme is designed to put both block columns on the side.  If you prefer the standard Moodle course layout you can check this box and be returned to the old three column layout.';
+
+$string['coursetitleposition'] = 'Course title postition';
+$string['coursetitlepositiondesc'] = 'Choose between \'Above\' and \'Within\' for the course.  Where \'Above\' is above the side-pre, page-top and course-content regions and \'Within\' is within the course-content region as it was before this setting was introduced.';
+$string['above'] = 'Above';
+$string['within'] = 'Within';
 
 $string['categoryincoursebreadcrumbfeature'] = 'Categories in the course breadcrumb';
 $string['categoryincoursebreadcrumbfeaturedesc'] = 'Show the category links in the breadcrumb of the course.';
@@ -320,6 +332,14 @@ $string['themedefaultbuttonbackgroundhovercolour'] = 'Default button background 
 $string['themedefaultbuttonbackgroundhovercolourdesc'] = 'Set the background hover colour for all default buttons.';
 $string['themeiconcolor'] = 'Icon colour';
 $string['themeiconcolordesc'] = 'Set the colour for all icons.';
+$string['themesidepreblockbackgroundcolour'] = '\'side-pre\' block background colour';
+$string['themesidepreblockbackgroundcolourdesc'] = 'Set the background colour for the \'side-pre\' block.';
+$string['themesidepreblocktextcolour'] = '\'side-pre\' block text colour';
+$string['themesidepreblocktextcolourdesc'] = 'Set the text colour for the \'side-pre\' block.';
+$string['themesidepreblockurlcolour'] = '\'side-pre\' block link colour';
+$string['themesidepreblockurlcolourdesc'] = 'Set the link colour for the \'side-pre\' block.';
+$string['themesidepreblockhovercolour'] = '\'side-pre\' link hover background colour';
+$string['themesidepreblockhovercolourdesc'] = 'Set the link hover colour for the \'side-pre\' block.';
 $string['themenavcolor'] = 'Navigation text colour';
 $string['themenavcolordesc'] = 'Set the text colour for navigation.  Being the navigation bar and the breadcrumb fancy style.';
 $string['themestripetextcolour'] = 'Stripe text colour';
@@ -328,6 +348,14 @@ $string['themestripeurlcolour'] = 'Stripe url colour';
 $string['themestripeurlcolourdesc'] = 'Set the url colour for stripes in tables.';
 $string['themestripebackgroundcolour'] = 'Stripe background colour';
 $string['themestripebackgroundcolourdesc'] = 'Set the background colour for stripes in tables.';
+$string['themequizsubmittextcolour'] = 'Quiz \'Submit all and finish\' text colour';
+$string['themequizsubmittextcolourdesc'] = 'Set the text colour for the quiz \'Submit all and finish\' button.';
+$string['themequizsubmitbackgroundcolour'] = 'Quiz \'Submit all and finish\' background colour';
+$string['themequizsubmitbackgroundcolourdesc'] = 'Set the background colour for the quiz \'Submit all and finish\' button.';
+$string['themequizsubmittexthovercolour'] = 'Quiz \'Submit all and finish\' text hover colour';
+$string['themequizsubmittexthovercolourdesc'] = 'Set the text hover colour for the quiz \'Submit all and finish\' button.';
+$string['themequizsubmitbackgroundhovercolour'] = 'Quiz \'Submit all and finish\' background hover colour';
+$string['themequizsubmitbackgroundhovercolourdesc'] = 'Set the background hover colour for the quiz \'Submit all and finish\' button.';
 
 $string['footercolor'] = 'Footer background colour';
 $string['footercolordesc'] = 'Set what colour the background of the Footer box should be.';
@@ -376,6 +404,14 @@ $string['alternativethemedefaultbuttonbackgroundhovercolour'] = 'Default button 
 $string['alternativethemedefaultbuttonbackgroundhovercolourdesc'] = 'Set the background hover colour for all default buttons {$a}.';
 $string['alternativethemeiconcolor'] = 'Alternative icon colour {$a}';
 $string['alternativethemeiconcolordesc'] = 'Set the alternative {$a} colour for all icons.';
+$string['alternativethemesidepreblockbackgroundcolour'] = 'Alternative {$a} \'side-pre\' block background colour';
+$string['alternativethemesidepreblockbackgroundcolourdesc'] = 'Set the alternative {$a} background colour for the \'side-pre\' block.';
+$string['alternativethemesidepreblocktextcolour'] = 'Alternative {$a} \'side-pre\' block text colour';
+$string['alternativethemesidepreblocktextcolourdesc'] = 'Set the alternative {$a} text colour for the \'side-pre\' block.';
+$string['alternativethemesidepreblockurlcolour'] = 'Alternative {$a} \'side-pre\' block link colour';
+$string['alternativethemesidepreblockurlcolourdesc'] = 'Set the alternative {$a} link colour for the \'side-pre\' block.';
+$string['alternativethemesidepreblockhovercolour'] = 'Alternative {$a} \'side-pre\' block link hover colour';
+$string['alternativethemesidepreblockhovercolourdesc'] = 'Set the alternative {$a} link hover colour for the \'side-pre\' block.';
 $string['alternativethemenavcolor'] = 'Navigation text colour {$a}';
 $string['alternativethemenavcolordesc'] = 'Set the alternative {$a} text colour for navigation.  Being the navigation bar and the breadcrumb fancy style.';
 $string['alternativethemehovercolor'] = 'Alternative theme hover colour {$a}';
@@ -386,6 +422,14 @@ $string['alternativethemestripeurlcolour'] = 'Alternative stripe url colour {$a}
 $string['alternativethemestripeurlcolourdesc'] = 'Set the alternative {$a} url colour for stripes in tables.';
 $string['alternativethemestripebackgroundcolour'] = 'Alternative stripe background colour {$a}';
 $string['alternativethemestripebackgroundcolourdesc'] = 'Set the alternative {$a} background colour for stripes in tables.';
+$string['alternativethemequizsubmittextcolour'] = 'Quiz \'Submit all and finish\' text colour {$a}';
+$string['alternativethemequizsubmittextcolourdesc'] = 'Set the alternative {$a} text colour for the quiz \'Submit all and finish\' button.';
+$string['alternativethemequizsubmitbackgroundcolour'] = 'Quiz \'Submit all and finish\' background colour {$a}';
+$string['alternativethemequizsubmitbackgroundcolourdesc'] = 'Set the alternative {$a} background colour for the quiz \'Submit all and finish\' button.';
+$string['alternativethemequizsubmittexthovercolour'] = 'Quiz \'Submit all and finish\' text hover colour {$a}';
+$string['alternativethemequizsubmittexthovercolourdesc'] = 'Set the alternative {$a} text hover colour for the quiz \'Submit all and finish\' button.';
+$string['alternativethemequizsubmitbackgroundhovercolour'] = 'Quiz \'Submit all and finish\' background hover colour {$a}';
+$string['alternativethemequizsubmitbackgroundhovercolourdesc'] = 'Set the alternative {$a} background hover colour for the quiz \'Submit all and finish\' button.';
 
 $string['alternativethememycoursesorderenrolbackcolour'] = 'Alternative {$a} enrolled and not accessed course background colour';
 $string['alternativethememycoursesorderenrolbackcolourdesc'] = 'Set alternative {$a} background colour for enrolled but not accessed courses.  For ehen \'mycoursesorder\' is set to \'Last accessed...\'.';
@@ -657,25 +701,27 @@ $string['ctioverridetextbackgroundopacity'] = 'Default overridden course title t
 $string['ctioverridetextbackgroundopacitydesc'] = 'Default overridden text background opacity for the course title.';
 
 // Category Icons.
-$string['categoryiconheading'] = 'Category icons';
+$string['categoryiconheading'] = 'Category icons / images';
 $string['categoryiconheadingsub'] = 'Use icons to represent your categories';
-$string['categoryicondesc'] = 'If enabled this will allow you to set icons for each category of course.';
+$string['categoryicondesc'] = 'If enabled this will allow you to set icons / images for each category.';
 $string['categoryiconcategory'] = 'The icon for the category: {$a->category}.';
+$string['categoryimagecategory'] = 'The image for the category: {$a->category}.';
 
-$string['enablecategoryicon'] = 'Enable category icons';
-$string['enablecategoryicondesc'] = 'If enabled you will be able to select category icons after clicking "Save changes".';
+$string['enablecategoryicon'] = 'Enable category icons / images';
+$string['enablecategoryicondesc'] = 'If enabled you will be able to select category icons / images after clicking "Save changes".';
 
-$string['usecategoryicon'] = 'Enable category icons';
-$string['usecategoryicondesc'] = 'Use custom icons for categories';
+$string['defaultcategoryicon'] = 'Default category icon';
+$string['defaultcategoryicondesc'] = 'Set a default category icon.';
+$string['defaultcategoryimage'] = 'Default category image';
+$string['defaultcategoryimagedesc'] = 'Set a default category image.  Will override the icon when populated.';
 
-$string['defaultcategoryicon'] = 'Default category icons';
-$string['defaultcategoryicondesc'] = 'Set a default category icon';
-
-$string['enablecustomcategoryicon'] = 'Enable custom category icons';
+$string['enablecustomcategoryicon'] = 'Enable custom category icons / images';
 $string['enablecustomcategoryicondesc'] = 'If enabled below this section you will see each category with a customizable option behind each category, please save after enabling and disabling this option.';
+$string['icon'] = 'icon';
+$string['image'] = 'image';
 
 $string['categoryiconinfo'] = 'Set custom category icons';
-$string['categoryiconinfodesc'] = 'Enter the name of the icon you wish to use.  List is <a href="http://fortawesome.github.io/Font-Awesome/cheatsheet/" target="_new">here</a>. Just enter what is after "fa-".';
+$string['categoryiconinfodesc'] = 'Enter the name of the icon or upload an image you wish to use.  List is <a href="http://fortawesome.github.io/Font-Awesome/cheatsheet/" target="_new">here</a>. Just enter what is after "fa-".';
 
 $string['numberofcoursesandsubcatcourses'] = 'Number of courses - sub category courses';
 
@@ -819,29 +865,6 @@ $string['ipadicondesc'] = 'Icon should be a PNG files sized 72px by 72px.';
 $string['ipadretinaicon'] = 'iPad Icon (Retina)';
 $string['ipadretinaicondesc'] = 'Icon should be a PNG files sized 144px by 144px.';
 
-// Analytics.
-$string['analytics'] = 'Analytics';
-$string['analyticsheadingsub'] = 'Powerful analytics for Moodle';
-$string['analyticsdesc'] = 'Choose the type of analytics you want to insert and save to enable the other options.';
-$string['analyticssiteid'] = 'Site ID';
-$string['analyticssiteiddesc'] = 'Enter your Site ID';
-$string['analyticstrackingid'] = 'Site ID';
-$string['analyticstrackingiddesc'] = 'Enter your Tracking ID';
-$string['analyticssiteurl'] = 'Analytics URL';
-$string['analyticssiteurldesc'] = 'Enter your "Piwik Analytics" URL without http(s) or a trailing slash.  For example "mysite.com/analytics".';
-$string['analyticsenabled'] = 'Enabled';
-$string['analyticsenableddesc'] = 'Enable analytics for Moodle';
-$string['analyticsimagetrack'] = 'Image tracking';
-$string['analyticscleanurl'] = 'Clean URLs';
-$string['analyticscleanurldesc'] = 'Generate clean URL for in advanced tracking';
-$string['analyticsimagetrackdesc'] = 'Enable Image Tracking for browsers with JavaScript disabled.';
-$string['analyticstrackadmin'] = 'Tracking Admins';
-$string['analyticstrackadmindesc'] = 'Enable tracking of Admin users (not recommended)';
-$string['analyticsuseuserid'] = 'User ID';
-$string['analyticsuseuseriddesc'] = 'Enable use of User ID in tracking.';
-$string['analyticspiwik'] = 'Piwik';
-$string['analyticsguniversal'] = 'Google Universal Analytics';
-
 // Properties.
 $string['properties'] = 'Properties';
 $string['propertiessub'] = 'The properties';
@@ -851,7 +874,7 @@ $string['propertiesvalue'] = 'Value';
 $string['propertiesexport'] = 'Export properties as a JSON string';
 $string['propertiesreturn'] = 'Return';
 $string['putpropertiesname'] = 'Put properties - Experimental!';
-$string['putpropertiesdesc'] = 'Paste the JSON string and \'Save changes\'.  Warning!  Does not valiate setting values and performs a \'Purge all caches\'.';
+$string['putpropertiesdesc'] = 'Paste the JSON string and \'Save changes\'.  Warning!  Does not validate setting values and performs a \'Purge all caches\'.';
 
 $string['putpropertyreport'] = 'Report:';
 $string['putpropertyversion'] = 'version:';
@@ -904,21 +927,23 @@ $string['versionalerttitle'] = 'Version warning: ';
 $string['versionalerttext1'] = 'Theme not designed for Moodle version.';
 $string['versionalerttext2'] = 'Unexpected issues may occur, please get the correct theme version for your Moodle version.';
 
-// Message Menu.
-$string['nomessagesfound'] = 'No messages were found';
-$string['unreadmessages'] = 'Unread messages ({$a})';
-$string['unreadnewnotification'] = 'New notification';
-
 // Preferences.
 $string['badgepreferences'] = 'Badge';
 
 // Incourse.
 $string['returntosection'] = 'Return to: {$a->section}';
 
-// Course content search.
-$string['findcoursecontent'] = 'Course content: ';
+// Course fullname and course content search.
+$string['findcoursecontent'] = 'Course search: ';
+$string['searchallcoursecontent'] = 'Search all course content';
+$string['searchallcoursecontentdefault'] = 'Default search all course content';
+$string['searchallcoursecontentdefaultdesc'] = 'Sets the value of the \'Search all course content\' checkbox on the course content search.  If \'Search all course content\' is unticked, then only the course fullname is searched for a match.';
 
 // essential_admin_setting_configinteger.
 $string['asconfigintlower'] = '{$a->value} is less than the lower range limit of {$a->lower}';
 $string['asconfigintupper'] = '{$a->value} is greater than the upper range limit of {$a->upper}';
 $string['asconfigintnan'] = '{$a->value} is not a number';
+
+// Privacy.
+$string['privacy:metadata:preference:courseitemsearchtype'] = 'The users choice of course search (\'course fullname\' - \'0\' or all course content - \'1\') if ever stored when \'coursecontentsearch\' was ticked.  If nothing stated then either the course search is off or the user has never viewed the dsahboard it when it was on.';
+$string['privacy:request:preference:courseitemsearchtype'] = 'The user has chosen "{$a->value}" for the course search user preference "{$a->name}" where \'0\' is the \'course fullname only\' and \'1\' is \'all course content\'.';

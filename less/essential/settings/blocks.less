@@ -5,11 +5,6 @@
     .icon {
         color: ~"[[setting:themeiconcolor]]";
     }
-    .moodle-core-dragdrop-draghandle {
-        &:before {
-            color: ~"[[setting:themeiconcolor]]";
-        }
-    }
     .menu {
         a.menu-action {
             color: ~"[[setting:themeurlcolor]]";
@@ -25,12 +20,50 @@
     color: ~"[[setting:themetextcolor]]";
 }
 
+#block-region-side-pre .block {
+    background-color: ~"[[setting:themesidepreblockbackgroundcolour]]";
+    color: ~"[[setting:themesidepreblocktextcolour]]";
+    p.tree_item.branch {
+        color: ~"[[setting:themesidepreblocktextcolour]]";
+    }
+    a,
+    a:visited,
+    .@{fa-css-prefix} { // Compromise with icon colour.
+        color: ~"[[setting:themesidepreblockurlcolour]]";
+    }
+    a:focus,
+    a:hover,
+    .@{fa-css-prefix}:focus,
+    .@{fa-css-prefix}:hover {
+        color: ~"[[setting:themesidepreblockhovercolour]]";
+    }
+    .header .title h2 {
+        color: ~"[[setting:themesidepreblocktextcolour]]";
+    }
+    &.block_flat_navigation {
+        background-color: transparent;
+        .list-group-item {
+            background-color: ~"[[setting:themesidepreblockbackgroundcolour]]";
+            color: ~"[[setting:themesidepreblocktextcolour]]";
+            a,
+            a:visited {
+                color: ~"[[setting:themesidepreblockurlcolour]]";
+            }
+            a:focus,
+            a:hover {
+                color: ~"[[setting:themesidepreblockhovercolour]]";
+            }
+        }
+    }
+}
+
 p.tree_item {
     &.leaf a {
         > .@{fa-css-prefix} {
             color: ~"[[setting:themeiconcolor]]";
         }
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
             color: ~"[[setting:themehovercolor]]";
             > .@{fa-css-prefix} {
                 color: inherit;
@@ -42,7 +75,8 @@ p.tree_item {
         &:before {
             color: ~"[[setting:themeiconcolor]]";
         }
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
             color: ~"[[setting:themehovercolor]]";
             &:before {
                 color: inherit;
@@ -55,7 +89,8 @@ p.tree_item {
             &:before {
                 color: ~"[[setting:themeiconcolor]]";
             }
-            &:hover, &:focus {
+            &:hover,
+            &:focus {
                 &:before {
                     color: ~"[[setting:themehovercolor]]";
                 }

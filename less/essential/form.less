@@ -1,10 +1,4 @@
 /* @group Forms */
-fieldset {
-    textarea[cols],
-    input[size] {
-        .fluid-span(8);
-    }
-}
 
 body#page-admin-setting-messageinbound_mailsettings fieldset select {
     .fluid-span(8);
@@ -22,7 +16,8 @@ body#page-admin-setting-messageinbound_mailsettings fieldset select {
     }
 }
 
-.form-item .form-label, .mform .fitem div.fitemtitle {
+.form-item .form-label,
+.mform .fitem div.fitemtitle {
     text-align: right;
 }
 
@@ -57,34 +52,25 @@ body#page-admin-setting-messageinbound_mailsettings fieldset select {
 
 #region-main {
     form {
-        .form-buttons {
-            width: 400px;
-            border-radius: @baseBorderRadius * 2;
-            input {
-                margin: 0px;
-            }
-        }
         table#form td.submit,
         .form-buttons,
         .path-admin .buttons,
         #fitem_id_submitbutton,
-        .fp-content-center form+div,
-        div.backup-section+form,
+        .fp-content-center form + div,
+        div.backup-section + form,
         #fgroup_id_buttonar {
-            width: 30%;
-            text-align: center;
+            border-radius: @baseBorderRadius;
             margin-left: auto;
             margin-right: auto;
+            padding: 10px 10px 0 5px;
+            text-align: center;
             z-index: 101;
-            padding: 10px;
-            border-radius: @baseBorderRadius;
             .felement {
                 margin-left: auto;
                 margin-right: auto;
             }
             > .fgroup {
-                margin: 0px;
-                padding-top: 15px;
+                margin: 0;
             }
             input[type=submit] {
                 .btn-primary;
@@ -104,8 +90,8 @@ body {
                 .form-buttons,
                 .path-admin .buttons,
                 #fitem_id_submitbutton,
-                .fp-content-center form+div,
-                div.backup-section+form,
+                .fp-content-center form + div,
+                div.backup-section + form,
                 #fgroup_id_buttonar {
                     position: fixed;
                     left: 35%;
@@ -113,15 +99,17 @@ body {
                 }
             }
         }
-        &#page-enrol-index, &#page-mod-forum-post, &#page-grade-grading-pick {
+        &#page-enrol-index,
+        &#page-mod-forum-post,
+        &#page-grade-grading-pick {
             #region-main {
                 form {
                     table#form td.submit,
                     .form-buttons,
                     .path-admin .buttons,
                     #fitem_id_submitbutton,
-                    .fp-content-center form+div,
-                    div.backup-section+form,
+                    .fp-content-center form + div,
+                    div.backup-section + form,
                     #fgroup_id_buttonar {
                         position: inherit;
                         left: inherit;
@@ -167,12 +155,13 @@ input[type="radio"],
 input[type="checkbox"] {
     margin-right: auto;
     + label {
-        padding-right: 0.4em;        
+        padding-right: 0.4em;
     }
 }
 
 .path-mod-forum .forumheaderlist {
-    .author, .lastpost {
+    .author,
+    .lastpost {
         white-space: normal !important;  // Override mod style.css that comes afterwards, yuck '!important' :(.
     }
 }
@@ -199,6 +188,17 @@ select {
 
 .form-description {
     word-break: break-word;
+}
+
+.mform label {
+    .adv,
+    .req {
+        > .icon {
+            height: 16px;
+            vertical-align: text-bottom;
+            width: 16px;
+        }
+    }
 }
 
 /* @end */

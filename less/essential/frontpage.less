@@ -10,11 +10,11 @@
 }
 
 .headingblock.header {
-    padding: 0px;
-    margin: 0px;
+    color: #777;
     font-size: 1.8em;
     line-height: 35px;
-    color: #777;
+    margin: 0;
+    padding: 0;
 }
 
 #page-site-index h2.headingblock:before {
@@ -45,7 +45,7 @@
 .courses .coursebox {
     background: @white;
     border-radius: 10px;
-    border: 1px solid #E1E1E1 !important;
+    border: 1px solid #e1e1e1 !important;
     padding: 10px;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
 }
@@ -84,9 +84,9 @@
 /* @group Back to Top */
 
 .back-to-top {
-    -webkit-transition: all .3s ease 0s;
-    -moz-transition: all .3s ease 0s;
-    -o-transition: all .3s ease 0s;
+    -webkit-transition: all .3s ease .5s;
+    -moz-transition: all .3s ease .5s;
+    -o-transition: all .3s ease .5s;
     background-color: #000;
     background-color: rgba(0, 0, 0, 0.5);
     -webkit-box-shadow: 0 0 1px @white;
@@ -150,7 +150,8 @@
                 padding-bottom: 32px;
             }
         }
-        .content, .title {
+        .content,
+        .title {
             margin: 3px 8px 4px;
         }
         .marketing-buttons {
@@ -173,9 +174,6 @@
                 }
             }
         }
-    }
-    > div {
-        display: flex;
     }
 }
 

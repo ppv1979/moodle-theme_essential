@@ -32,10 +32,7 @@ class theme_essential_core_course_renderer extends core_course_renderer {
 
     public function __construct(moodle_page $page, $target) {
         parent::__construct($page, $target);
-        static $theme;
-        if (empty($theme)) {
-            $theme = theme_config::load('essential');
-        }
+
         $this->enablecategoryicon = \theme_essential\toolbox::get_setting('enablecategoryicon');
     }
 
@@ -107,27 +104,34 @@ class theme_essential_core_course_renderer extends core_course_renderer {
         // Category name.
         $categoryname = html_writer::tag('span', $coursecat->get_formatted_name());
 
-        // Do a settings check to output our icon for the category.
-        if (\theme_essential\toolbox::get_setting('enablecategoryicon')) {
-            $customcategoryicon = \theme_essential\toolbox::get_setting('categoryicon'.$coursecat->id);
-            if ($customcategoryicon &&
-                \theme_essential\toolbox::get_setting('enablecustomcategoryicon')) {
-                // User has set a value for the category.
-                $val = $customcategoryicon;
-            } else {
-                // User hasn't set a value for the category, get the default.
-                $val = \theme_essential\toolbox::get_setting('defaultcategoryicon');
+        // Do a settings check to output our icon / image for the category.
+        if (\theme_essential\toolbox::get_setting('enablecustomcategoryicon')) {
+            // User may have set a value for the category.
+            $image = \theme_essential\toolbox::get_setting('categoryimage'.$coursecat->id, 'format_file_url');
+            if (empty($image)) {
+                $icon = \theme_essential\toolbox::get_setting('categoryicon'.$coursecat->id);;
             }
         }
-        if (!empty($val)) {
-            $icon = html_writer::tag('span', '', array('aria-hidden' => 'true', 'class' => 'fa fa-'.$val));
+        if ((empty($icon)) && (empty($image))) {
+            // User hasn't set a value for the category, get the default.
+            $image = \theme_essential\toolbox::get_setting('defaultcategoryimage', 'format_file_url');
+            if (empty($image)) {
+                $icon = \theme_essential\toolbox::get_setting('defaultcategoryicon');
+            }
+        }
+        if (!empty($image)) {
+            $categoryrepresentation = html_writer::start_tag('div', array('class' => 'categoryimage'));
+            $categoryrepresentation .= html_writer::empty_tag('img', array('src' => $image, 'class' => 'img-responsive'));
+            $categoryrepresentation .= html_writer::end_tag('div');
+        } else if (!empty($icon)) {
+            $categoryrepresentation = \theme_essential\toolbox::getfontawesomemarkup($icon);
         } else {
-            $icon = '';
+            $categoryrepresentation = '';
         }
 
         $categoryname = html_writer::link(new moodle_url('/course/index.php',
                 array('categoryid' => $coursecat->id)),
-            $icon . $categoryname);
+            $categoryrepresentation.$categoryname);
         $content .= html_writer::start_tag('div', array('class' => 'info'));
 
         $content .= html_writer::tag(($depth > 1) ? 'h4' : 'h3', $categoryname, array('class' => 'categoryname'));
@@ -241,7 +245,7 @@ class theme_essential_core_course_renderer extends core_course_renderer {
             }
             foreach ($course->get_course_contacts() as $userid => $coursecontact) {
                 $faiconsetting = \theme_essential\toolbox::get_setting('courselistteachericon');
-                $faiconsettinghtml = (empty($faiconsetting)) ? '' : '<span aria-hidden="true" class="fa fa-'.
+                $faiconsettinghtml = (empty($faiconsetting)) ? '' : '<span aria-hidden="true" class="'.
                     $faiconsetting.'"></span> ';
                 $name = $faiconsettinghtml.$coursecontact['rolename'].': '.
                         html_writer::link(new moodle_url('/user/view.php',
@@ -299,60 +303,72 @@ class theme_essential_core_course_renderer extends core_course_renderer {
         if (is_enabled_auth('mnet')) {
             $remotecourses = get_my_remotecourses();
         }
-        // Remote courses will have -ve remoteid as key, so it can be differentiated from normal courses.
+        // Remote courses will have remoteid as key, so it can be differentiated from normal courses.
         foreach ($remotecourses as $id => $val) {
             $remoteid = $val->remoteid * -1;
             $val->id = $remoteid;
             $courses[$remoteid] = $val;
         }
 
-        foreach ($courses as $course) {
-            $modinfo = get_fast_modinfo($course);
-            $courseformat = course_get_format($course->id);
-            $course = $courseformat->get_course();
-            $courseformatsettings = $courseformat->get_format_options();
-            $sesskey = sesskey();
+        if (empty($courses)) {
+            return $data;
+        }
 
-            foreach ($modinfo->get_section_info_all() as $section => $thissection) {
-                if (!$thissection->uservisible) {
-                    continue;
+        $courseitemsearchtype = \get_user_preferences('theme_essential_courseitemsearchtype');
+        $sesskey = sesskey();
+        foreach ($courses as $course) {
+            if (!$courseitemsearchtype) {
+                $label = $course->fullname;
+                if (stristr($label, $term)) {
+                    $courseurl = new moodle_url('/course/view.php', array('id' => $course->id, 'sesskey' => $sesskey));
+                    $data[] = array('id' => $courseurl->out(false), 'label' => $label, 'value' => $label);
                 }
-                if (is_object($thissection)) {
-                    $thissection = $modinfo->get_section_info($thissection->section);
-                } else {
-                    $thissection = $modinfo->get_section_info($thissection);
-                }
-                if ((string) $thissection->name !== '') {
-                    $sectionname = format_string($thissection->name, true,
-                        array('context' => context_course::instance($course->id)));
-                } else {
-                    $sectionname = $courseformat->get_section_name($thissection->section);
-                }
-                if ($thissection->section <= $course->numsections) {
-                    // Do not link 'orphaned' sections.
-                    $courseurl = new moodle_url('/course/view.php');
-                    $courseurl->param('id', $course->id);
-                    $courseurl->param('sesskey', $sesskey);
-                    if ((!empty($courseformatsettings['coursedisplay'])) &&
-                        ($courseformatsettings['coursedisplay'] == COURSE_DISPLAY_MULTIPAGE)) {
-                        $courseurl->param('section', $thissection->section);
-                        $coursehref = $courseurl->out(false);
+            } else {
+                $modinfo = get_fast_modinfo($course);
+                $courseformat = course_get_format($course->id);
+                $course = $courseformat->get_course();
+                $courseformatsettings = $courseformat->get_format_options();
+                $coursenumsections = $courseformat->get_last_section_number();
+
+                foreach ($modinfo->get_section_info_all() as $section => $thissection) {
+                    if (!$thissection->uservisible) {
+                        continue;
+                    }
+                    if (is_object($thissection)) {
+                        $thissection = $modinfo->get_section_info($thissection->section);
                     } else {
-                        $coursehref = $courseurl->out(false).'#section-'.$thissection->section;
+                        $thissection = $modinfo->get_section_info($thissection);
                     }
-                    $label = $course->fullname.' - '.$sectionname;
-                    if (stristr($label, $term)) {
-                        $data[] = array('id' => $coursehref, 'label' => $label, 'value' => $label);
+                    if ((string) $thissection->name !== '') {
+                        $sectionname = format_string($thissection->name, true,
+                            array('context' => context_course::instance($course->id)));
+                    } else {
+                        $sectionname = $courseformat->get_section_name($thissection->section);
                     }
-                }
-                if (!empty($modinfo->sections[$thissection->section])) {
-                    foreach ($modinfo->sections[$thissection->section] as $modnumber) {
-                        $mod = $modinfo->cms[$modnumber];
-                        if (!empty($mod->url)) {
-                            $instancename = $mod->get_formatted_name();
-                            $label = $course->fullname.' - '.$sectionname.' - '.$instancename;
-                            if (stristr($label, $term)) {
-                                $data[] = array('id' => $mod->url->out(false), 'label' => $label, 'value' => $label);
+                    if ($thissection->section <= $coursenumsections) {
+                        // Do not link 'orphaned' sections.
+                        $courseurl = new moodle_url('/course/view.php', array('id' => $course->id, 'sesskey' => $sesskey));
+                        if ((!empty($courseformatsettings['coursedisplay'])) &&
+                            ($courseformatsettings['coursedisplay'] == COURSE_DISPLAY_MULTIPAGE)) {
+                            $courseurl->param('section', $thissection->section);
+                            $coursehref = $courseurl->out(false);
+                        } else {
+                            $coursehref = $courseurl->out(false).'#section-'.$thissection->section;
+                        }
+                        $label = $course->fullname.' - '.$sectionname;
+                        if (stristr($label, $term)) {
+                            $data[] = array('id' => $coursehref, 'label' => $label, 'value' => $label);
+                        }
+                    }
+                    if (!empty($modinfo->sections[$thissection->section])) {
+                        foreach ($modinfo->sections[$thissection->section] as $modnumber) {
+                            $mod = $modinfo->cms[$modnumber];
+                            if (!empty($mod->url)) {
+                                $instancename = $mod->get_formatted_name();
+                                $label = $course->fullname.' - '.$sectionname.' - '.$instancename;
+                                if (stristr($label, $term)) {
+                                    $data[] = array('id' => $mod->url->out(false), 'label' => $label, 'value' => $label);
+                                }
                             }
                         }
                     }

@@ -1,17 +1,19 @@
-/*
+/*!
  * @package     theme_essential
  * @copyright   2015 Gareth J Barnard
  * @copyright   2014 Gareth J Barnard, David Bezemer
  * @copyright   2013 Julian Ridden
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+/*! Essential lint disable */
+/*! Disabling as already linted in the LESS. */
 // Import the bootstrap we need.
 @import "../../bootstrapbase/less/bootstrap/variables";
 @import "bootstrap-override/variables";
 @import "essential/variables";
 @import "fontawesome/variables";
-
 @import "../../bootstrapbase/less/bootstrap/mixins";
+
 // Opacity
 .opacity(@opacity) {
     opacity: @opacity / 100;
@@ -21,7 +23,8 @@
 // Import the essential variables.
 @import "essential/settings/variables";
 
-.navbar .navbar-inner #custom_menu_themecolours .dropdown-menu li > a.default {
+.navbar
+.navbar-inner #custom_menu_themecolours .dropdown-menu li > a.default {
     &:hover, &:focus {
         color: ~"[[setting:themenavcolor]]";
         background-color: ~"[[setting:themecolor]]";
@@ -35,9 +38,14 @@
 
             /* @group Alternative colours @{index} */
 
-            body.essential-colours-alternative@{index} {
+            .essential-colours-alternative@{index} {
                 color: ~"[[setting:alternativethemetextcolor@{index}]]";
-                h1, h2, h3, h4, h5, h6,
+                h1,
+                h2,
+                h3,
+                h4,
+                h5,
+                h6,
                 #adminsettings h3,
                 .color,
                 #page-header h1#title,
@@ -72,9 +80,9 @@
                     // Focus state.
                     &:focus {
                         border-color: ~"[[setting:alternativethemeinputfocusbordercolor@{index}]]";
-                        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px ~"[[setting:alternativethemeinputfocusshadowcolor@{index}]]";
-                        -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px ~"[[setting:alternativethemeinputfocusshadowcolor@{index}]]";
-                        box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px ~"[[setting:alternativethemeinputfocusshadowcolor@{index}]]";
+                        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px ~"[[setting:alternativethemeinputfocusshadowcolor@{index}]]";
+                        -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px ~"[[setting:alternativethemeinputfocusshadowcolor@{index}]]";
+                        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px ~"[[setting:alternativethemeinputfocusshadowcolor@{index}]]";
                     }
                 }
 
@@ -95,19 +103,22 @@
                                 }
                             }
                             &:after {
-                                border-left-color: ~"[[setting:alternativethemecolor@{index}]]";;
+                                border-left-color: ~"[[setting:alternativethemecolor@{index}]]";
                             }
                             &:first-of-type {
                                 a:before {
                                     color: ~"[[setting:alternativethemenavcolor@{index}]]";
                                 }
                             }
-                            &:hover, &:focus {
+                            &:hover,
+                            &:focus {
                                 background-color: ~"[[setting:alternativethemenavcolor@{index}]]";
                                 &:before {
                                     border-left-color: ~"[[setting:alternativethemecolor@{index}]]";
                                 }
-                                span, a, a:before {
+                                span,
+                                a,
+                                a:before {
                                     color: ~"[[setting:alternativethemecolor@{index}]]";
                                 }
                             }
@@ -129,17 +140,20 @@
                     }
                 }
 
-                a, a:visited {
+                a,
+                a:visited {
                     color: ~"[[setting:alternativethemeurlcolor@{index}]]";
                 }
 
-                a:focus, a:hover {
+                a:focus,
+                a:hover {
                     color: ~"[[setting:alternativethemehovercolor@{index}]]";
                 }
 
                 .@{fa-css-prefix} {
                     color: ~"[[setting:alternativethemeiconcolor@{index}]]";
-                    &:focus, &:hover {
+                    &:focus,
+                    &:hover {
                         color: ~"[[setting:alternativethemehovercolor@{index}]]";
                     }
                     &.@{fa-css-prefix}-warning {
@@ -148,12 +162,83 @@
                 }
                 .dimmed .@{fa-css-prefix} {
                     color: inherit;
-                    &:focus, &:hover {
+                    &:focus,
+                    &:hover {
                         color: inherit;
                     }
                 }
-                button.socialicon .@{fa-css-prefix} {
-                    color: @white;
+                button {
+                    &.socialicon {
+                        background-color: #bbb;
+                        background-image: none;
+                        .@{fa-css-prefix} {
+                            color: @white;
+                        }
+                        &:hover,
+                        &:focus {
+                            background-image: none;
+                        }
+                    }
+                    &.facebook:hover,
+                    &.facebook:focus {
+                        background-color: #4a6ea9;
+                    }
+                    &.skype:hover,
+                    &.skype:focus {
+                        background-color: #00adf7;
+                    }
+                    &.instagram:hover,
+                    &.instagram:focus {
+                        background-color: #a5674a;
+                    }
+                    &.ios:hover,
+                    &.ios:focus {
+                        background-color: #000;
+                    }
+                    &.windows:hover,
+                    &.windows:focus {
+                        background-color: #008a00;
+                    }
+                    &.winphone:hover,
+                    &.winphone:focus {
+                        background-color: #9b4f96;
+                    }
+                    &.android:hover,
+                    &.android:focus {
+                        background-color: #98cd32;
+                    }
+                    &.vk:hover,
+                    &.vk:focus {
+                        background-color: #4a6ea9;
+                    }
+                    &.twitter:hover,
+                    &.twitter:focus {
+                        background-color: #00aced;
+                    }
+                    &.googleplus:hover,
+                    &.googleplus:focus {
+                        background-color: #f42941;
+                    }
+                    &.flickr:hover,
+                    &.flickr:focus {
+                        background-color: #ff3096;
+                    }
+                    &.instagram:hover,
+                    a.instagram:focus {
+                        background-color: #b99c6b;
+                    }
+                    &.youtube:hover,
+                    &.youtube:focus {
+                        background-color: #f42941;
+                    }
+                    &.pinterest:hover,
+                    &.pinterest:focus {
+                        background-color: #f42941;
+                    }
+                    &.linkedin:hover,
+                    &.linkedin:focus {
+                        background-color: #4a9cc9;
+                    }
                 }
 
                 a {
@@ -168,10 +253,12 @@
                     }
                 }
 
-                .filemanager, .file-picker {
+                .filemanager,
+                .file-picker {
                     a, a:visited {
                         color: ~"[[setting:alternativethemeurlcolor@{index}]]";
-                        &:hover, &:focus {
+                        &:hover,
+                        &:focus {
                             color: ~"[[setting:alternativethemehovercolor@{index}]]";
                             &:before {
                                 color: ~"[[setting:alternativethemehovercolor@{index}]]";
@@ -221,7 +308,9 @@
                         background-color: ~"[[setting:alternativethemecolor@{index}]]";
                         background-image: none;
                         border-color: ~"[[setting:alternativethemecolor@{index}]]";
-                        &:focus, &:hover, &:active {
+                        &:focus,
+                        &:hover,
+                        &:active {
                             color: ~"[[setting:alternativethemecolor@{index}]]";
                             background-color: ~"[[setting:alternativethemenavcolor@{index}]]";
                             background-image: none;
@@ -230,7 +319,8 @@
                 }
 
                 a.website {
-                    &:hover, &:focus {
+                    &:hover,
+                    &:focus {
                         background-color: ~"[[setting:alternativethemecolor@{index}]]";
                     }
                 }
@@ -238,7 +328,7 @@
                 img.userpicture,
                 img.profilepicture {
                     border-color: ~"[[setting:alternativethemecolor@{index}]]";
-                    box-shadow: 0px 0px 3px ~"[[setting:alternativethemecolor@{index}]]";
+                    box-shadow: 0 0 3px ~"[[setting:alternativethemecolor@{index}]]";
                 }
 
                 .navbar {
@@ -263,14 +353,15 @@
                         .nav > li > a,
                         .search-input-wrapper > div .@{fa-css-prefix} {
                             color: ~"[[setting:alternativethemenavcolor@{index}]]";
-                            &:focus, &:hover {
+                            &:focus,
+                            &:hover {
                                 color: ~"[[setting:alternativethemecolor@{index}]]";
                                 background-color: ~"[[setting:alternativethemenavcolor@{index}]]";
                             }
                         }
 
                         .nav .dropdown-menu {
-                            .dropdown-submenu  {
+                            .dropdown-submenu {
                                 .dropdown-toggle:after {
                                     border-left-color: inherit;
                                 }
@@ -283,11 +374,12 @@
                         }
 
                         .usermenu .nav .dropdown-menu {
-                            .dropdown-submenu  {
+                            .dropdown-submenu {
                                 .dropdown-toggle:after {
                                     border-right-color: inherit;
                                 }
-                                &:focus, &:hover {
+                                &:focus,
+                                &:hover {
                                     .dropdown-toggle:after {
                                         border-right-color: ~"[[setting:alternativethemenavcolor@{index}]]";
                                     }
@@ -309,7 +401,8 @@
                                 .@{fa-css-prefix} {
                                     color: inherit;
                                 }
-                                &:focus, &:hover {
+                                &:focus,
+                                &:hover {
                                     color: ~"[[setting:alternativethemenavcolor@{index}]]";
                                     background-color: ~"[[setting:alternativethemehovercolor@{index}]]";
                                 }
@@ -317,11 +410,12 @@
                             > li.dropdown .dropdown-menu {
                                 li > a {
                                     color: ~"[[setting:alternativethemetextcolor@{index}]]";
-                                    &:hover { 
+                                    &:hover {
                                         color: @white; // TODO: Page background colour needs to be a setting.
                                         background-color: ~"[[setting:alternativethemeurlcolor@{index}]]";
                                     }
-                                    &:focus, &.open {
+                                    &:focus,
+                                    &.open {
                                         color: @white; // TODO: Page background colour needs to be a setting.
                                         background-color: ~"[[setting:alternativethemeurlcolor@{index}]]";
                                         .@{fa-css-prefix} {
@@ -352,13 +446,17 @@
                         border-color: ~"[[setting:alternativethemecolor@{index}]]";
                     }
 
-                    .nav .active > a, .nav .active > a:hover, .nav .active > a:focus {
+                    .nav .active > a,
+                    .nav .active > a:hover,
+                    .nav .active > a:focus {
                         color: ~"[[setting:alternativethemenavcolor@{index}]]";
                         background-color: ~"[[setting:alternativethemecolor@{index}]]" !important;
                     }
                     .nav {
                         li.dropdown {
-                            &.open > .dropdown-toggle, &.active > .dropdown-toggle, &.open.active > .dropdown-toggle {
+                            &.open > .dropdown-toggle,
+                            &.active > .dropdown-toggle,
+                            &.open.active > .dropdown-toggle {
                                 color: @white; // TODO: Page background colour needs to be a setting.
                                 background-color: ~"[[setting:alternativethemehovercolor@{index}]]";
                             }
@@ -379,27 +477,15 @@
                         }
                     }
 
-                    .navbar-inner .messagemenu {
-                        ul.nav {
-                            .dropdown-menu {
-                                border: 1px solid ~"[[setting:alternativethemecolor@{index}]]";
-                                li > a {
-                                    border-top: 1px dotted ~"[[setting:alternativethemecolor@{index}]]";
-                                    &:hover {
-                                        .message, .notification {
-                                            color: @white; // TODO: Page background colour needs to be a setting.
-                                            background-color: ~"[[setting:alternativethemehovercolor@{index}]]";
-                                            img {
-                                                &.userpicture, &.profilepicture {
-                                                    box-shadow: 0 0 3px ~"[[setting:alternativethemenavcolor@{index}]]";
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+                   .popover-region-toggle {
+                        color: ~"[[setting:alternativethemenavcolor@{index}]]";
+                        &:hover,
+                        &:focus {
+                            color: ~"[[setting:alternativethemecolor@{index}]]";
+                            background-color: ~"[[setting:alternativethemenavcolor@{index}]]";
                         }
                     }
+
                 }
 
                 .course-content ul li.section.main.current {
@@ -419,13 +505,15 @@
                     }
                 }
 
-                button, .btn-default, a.btn-default,
+                button,
+                .btn-default,
+                a.btn-default,
                 button.btn-cancel,
                 input.form-submit,
                 input[type="button"],
                 input[type="submit"],
                 input[type="reset"],
-                #notice .singlebutton+.singlebutton input,
+                #notice .singlebutton + .singlebutton input,
                 .submit.buttons input[name=cancel] {
                     color: ~"[[setting:alternativethemedefaultbuttontextcolour@{index}]]";
                     .@{fa-css-prefix} {
@@ -440,7 +528,12 @@
                     background-image: -o-linear-gradient(bottom, ~"[[setting:alternativethemedefaultbuttonbackgroundcolourimage@{index}]]", ~"[[setting:alternativethemedefaultbuttonbackgroundcolourrgba@{index}]]"); // Opera 11.10
                     background-image: linear-gradient(to top, ~"[[setting:alternativethemedefaultbuttonbackgroundcolourimage@{index}]]", ~"[[setting:alternativethemedefaultbuttonbackgroundcolourrgba@{index}]]"); // Standard, IE10
 
-                    &:hover, &:focus, &:active, &.active, &.disabled, &[disabled] {
+                    &:hover,
+                    &:focus,
+                    &:active,
+                    &.active,
+                    &.disabled,
+                    &[disabled] {
                         color: ~"[[setting:alternativethemedefaultbuttontexthovercolour@{index}]]";
                         text-shadow: 0 1px 1px rgba(64, 64, 64, .75);
                         background-color: ~"[[setting:alternativethemedefaultbuttonbackgroundhovercolour@{index}]]";
@@ -454,9 +547,15 @@
                         }
                     }
                 }
+
+                button.close {
+                    background: transparent;
+                }
+
                 .btn {
                     .buttonBackground(@btnBackground, @btnBackgroundHighlight, @grayDark, 0 1px 1px rgba(255,255,255,.75));
-                    &:hover, &:focus {
+                    &:hover,
+                    &:focus {
                         background-image: none;
                     }
 
@@ -523,8 +622,13 @@
                     }
                 }
 
+                // Atto.
                 div.editor_atto_toolbar button {
                     background: none;
+                }
+                .editor_atto_content_wrap,
+                div.editor_atto_toolbar button .icon {
+                    color: ~"[[setting:alternativethemetextcolor@{index}]]";
                 }
                 .moodle-dialogue-base .closebutton:hover {
                     background-image: url(~"[[pix:theme|sprite]]");
@@ -536,14 +640,22 @@
                     .container-fluid {
                         max-width: ~"[[setting:pagewidth]]";
                     }
-                    h1, h2 {
+                    h1,
+                    h2 {
                         font-family: ~"[[setting:headingfont]]";
                     }
-                    h1, h2, h3, h4, h5, h6, #adminsettings h3 {
+                    h1,
+                    h2,
+                    h3,
+                    h4,
+                    h5,
+                    h6,
+                    #adminsettings h3 {
                         color: ~"[[setting:alternativethemetextcolor@{index}]]";
                     }
 
-                    a, a:visited {
+                    a,
+                    a:visited {
                         color: ~"[[setting:alternativethemeurlcolor@{index}]]";
                     }
 
@@ -580,9 +692,12 @@
                 }
 
                 .alert {
-                    .@{fa-css-prefix}-info, .@{fa-css-prefix}-warning, .@{fa-css-prefix}-bullhorn {
+                    .@{fa-css-prefix}-info,
+                    .@{fa-css-prefix}-warning,
+                    .@{fa-css-prefix}-bullhorn {
                         color: ~"[[setting:alternativethemenavcolor@{index}]]";
-                        &:hover, &:focus {
+                        &:hover,
+                        &:focus {
                             color: ~"[[setting:alternativethemenavcolor@{index}]]";
                         }
                     }
@@ -595,7 +710,8 @@
                 .ui-autocomplete {
                     .ui-menu-item {
                         color: ~"[[setting:alternativethemetextcolor@{index}]]";
-                        &:hover, &:focus {
+                        &:hover,
+                        &:focus {
                             color: ~"[[setting:alternativethemenavcolor@{index}]]";
                             background-color: ~"[[setting:alternativethemecolor@{index}]]";
                         }
@@ -608,7 +724,8 @@
                         .carousel-caption {
                             background-color: ~"[[setting:alternativethemeslidecaptionbackgroundcolor@{index}]]";
                             .opacity(75);
-                            h4, p {
+                            h4,
+                            p {
                                 color: ~"[[setting:alternativethemeslidecaptiontextcolor@{index}]]";
                             }
                         }
@@ -616,7 +733,8 @@
                         &.pagebackground {
                             .the-side-caption-content {
                                 background-color: ~"[[setting:alternativethemeslidecaptionbackgroundcolor@{index}]]";
-                                h4, div {
+                                h4,
+                                div {
                                     color: ~"[[setting:alternativethemeslidecaptiontextcolor@{index}]]";
                                 }
                             }
@@ -628,13 +746,13 @@
 
                         // Hover/focus state.
                         &:hover,
-                            &:focus {
+                        &:focus {
                             color: ~"[[setting:alternativethemeslidebuttonhovercolor@{index}]]";
                         }
                         .@{fa-css-prefix} {
                             color: ~"[[setting:alternativethemeslidebuttoncolor@{index}]]";
                             &:hover,
-                                &:focus {
+                            &:focus {
                                 color: ~"[[setting:alternativethemeslidebuttonhovercolor@{index}]]";
                             }
                         }
@@ -642,7 +760,7 @@
 
                     // Carousel indicator pips.
                     .carousel-indicators {
-                        box-shadow: 0px 0px 8px ~"[[setting:alternativethemeslidebuttoncolor@{index}]]";
+                        box-shadow: 0 0 8px ~"[[setting:alternativethemeslidebuttoncolor@{index}]]";
                         li {
                             background-color: ~"[[setting:alternativethemeslidebuttoncolor@{index}]]";
                             .opacity(75);
@@ -654,12 +772,6 @@
                 }
 
                 .block {
-                    a {
-                        color: ~"[[setting:alternativethemeurlcolor@{index}]]";
-                    }
-                    a:hover {
-                        color: ~"[[setting:alternativethemehovercolor@{index}]]";
-                    }
                     .header .title h2 {
                         color: ~"[[setting:alternativethemetextcolor@{index}]]";
                         &:before {
@@ -668,6 +780,43 @@
                     }
                     .icon {
                         color: ~"[[setting:alternativethemeiconcolor@{index}]]";
+                    }
+                }
+
+                #block-region-side-pre .block {
+                    background-color: ~"[[setting:alternativethemesidepreblockbackgroundcolour@{index}]]";
+                    color: ~"[[setting:alternativethemesidepreblocktextcolour@{index}]]";
+                    p.tree_item.branch {
+                        color: ~"[[setting:alternativethemesidepreblocktextcolour@{index}]]";
+                    }
+                    a,
+                    a:visited,
+                    .@{fa-css-prefix} { // Compromise with icon colour.
+                        color: ~"[[setting:alternativethemesidepreblockurlcolour@{index}]]";
+                    }
+                    a:focus,
+                    a:hover,
+                    .@{fa-css-prefix}:focus,
+                    .@{fa-css-prefix}:hover {
+                        color: ~"[[setting:alternativethemesidepreblockhovercolour@{index}]]";
+                    }
+                    .header .title h2 {
+                        color: ~"[[setting:alternativethemesidepreblocktextcolour@{index}]]";
+                    }
+                    &.block_flat_navigation {
+                        background-color: transparent;
+                        .list-group-item {
+                            background-color: ~"[[setting:alternativethemesidepreblockbackgroundcolour@{index}]]";
+                            color: ~"[[setting:alternativethemesidepreblocktextcolour@{index}]]";
+                            a,
+                            a:visited {
+                                color: ~"[[setting:alternativethemesidepreblockurlcolour@{index}]]";
+                            }
+                            a:focus,
+                            a:hover {
+                                color: ~"[[setting:alternativethemesidepreblockhovercolour@{index}]]";
+                            }
+                        }
                     }
                 }
 
@@ -712,12 +861,13 @@
 
                 #page-footer {
                     .footnote {
-                        a, a:visited {
+                        a,
+                        a:visited {
                             color: ~"[[setting:alternativethemeurlcolor@{index}]]";
                         }
                     }
                     .block_html ul li:before,
-                        #greyboxright ul li:before {
+                    #greyboxright ul li:before {
                         background-color: ~"[[setting:alternativethemecolor@{index}]]";
                     }
                     .block_login input[type="submit"] {
@@ -736,15 +886,18 @@
                     color: ~"[[setting:alternativethemefootertextcolor@{index}]]";
                     border-top: 2px solid ~"[[setting:alternativethemefootercolor@{index}]]";
                     border-bottom: 3px solid ~"[[setting:alternativethemefootercolor@{index}]]";
-                    a, a > .@{fa-css-prefix} {
+                    a,
+                    a > .@{fa-css-prefix} {
                         color: ~"[[setting:alternativethemefooterurlcolor@{index}]]";
                     }
-                    a:hover, a:hover > .@{fa-css-prefix} {
+                    a:hover,
+                    a:hover > .@{fa-css-prefix} {
                         color: ~"[[setting:alternativethemefooterhovercolor@{index}]]";
                     }
                     .footnote {
                         color: ~"[[setting:alternativethemefootertextcolor@{index}]]";
-                        a, a:visited {
+                        a,
+                        a:visited {
                             color: ~"[[setting:alternativethemefooterurlcolor@{index}]]";
                         }
                         a:hover {
@@ -769,19 +922,16 @@
                     .block {
                         background-color: ~"[[setting:alternativethemefooterblockbackgroundcolour@{index}]]";
                         color: ~"[[setting:alternativethemefooterblocktextcolour@{index}]]";
-                        a, a > .@{fa-css-prefix} {
+                        a,
+                        a > .@{fa-css-prefix} {
                             color: ~"[[setting:alternativethemefooterblockurlcolour@{index}]]";
                         }
-                        a:hover, a:hover > .@{fa-css-prefix} {
+                        a:hover,
+                        a:hover > .@{fa-css-prefix} {
                             color: ~"[[setting:alternativethemefooterblockhovercolour@{index}]]";
                         }
                         .icon {
                             color: ~"[[setting:alternativethemefooterblockurlcolour@{index}]]";
-                        }
-                        .moodle-core-dragdrop-draghandle {
-                            &:before {
-                                color: ~"[[setting:alternativethemefooterblockurlcolour@{index}]]";
-                            }
                         }
                     }
                     .block .header {
@@ -790,11 +940,12 @@
                             color: inherit;
                         }
                     }
-                    .header .title h2:before, &.block_iconic_html .header .title h2 span.@{fa-css-prefix}:before {
+                    .header .title h2:before,
+                    &.block_iconic_html .header .title h2 span.@{fa-css-prefix}:before {
                         color: inherit;
                     }
                     .block_html ul li:before,
-                        #greyboxright ul li:before {
+                    #greyboxright ul li:before {
                         background-color: ~"[[setting:alternativethemecolor@{index}]]";
                     }
                     .block_login input[type="submit"] {
@@ -813,7 +964,8 @@
                         > .@{fa-css-prefix} {
                             color: ~"[[setting:alternativethemeiconcolor@{index}]]";
                         }
-                        &:hover, &:focus {
+                        &:hover,
+                        &:focus {
                             color: ~"[[setting:alternativethemehovercolor@{index}]]";
                             > .@{fa-css-prefix} {
                                 color: inherit;
@@ -825,7 +977,8 @@
                         &:before {
                             color: ~"[[setting:alternativethemeiconcolor@{index}]]";
                         }
-                        &:hover, &:focus {
+                        &:hover,
+                        &:focus {
                             color: ~"[[setting:alternativethemehovercolor@{index}]]";
                             &:before {
                                 color: inherit;
@@ -838,7 +991,8 @@
                             &:before {
                                 color: ~"[[setting:alternativethemeiconcolor@{index}]]";
                             }
-                            &:hover, &:focus {
+                            &:hover,
+                            &:focus {
                                 &:before {
                                     color: ~"[[setting:alternativethemehovercolor@{index}]]";
                                 }
@@ -872,7 +1026,8 @@
                     > a {
                         color: ~"[[setting:alternativethemenavcolor@{index}]]";
                         background-color: ~"[[setting:alternativethemecolor@{index}]]";
-                        &:hover, &:focus {
+                        &:hover,
+                        &:focus {
                             color: ~"[[setting:alternativethemecolor@{index}]]";
                             background-color: ~"[[setting:alternativethemenavcolor@{index}]]";
                         }
@@ -902,12 +1057,20 @@
                     span {
                         color: ~"[[setting:alternativethemefooterblocktextcolour@{index}]]";
                     }
-                    #cache:before, #load:before, #memory:before, #peakmemory:before, #session:before, #included:before, #dbqueries:before, #dbtime:before {
+                    #cache:before,
+                    #load:before,
+                    #memory:before,
+                    #peakmemory:before,
+                    #session:before,
+                    #included:before,
+                    #dbqueries:before,
+                    #dbtime:before {
                         color: ~"[[setting:alternativethemenavcolor@{index}]]";
                     }
                     span.@{fa-css-prefix} {
                         color: inherit;
-                        &:hover, &:focus {
+                        &:hover,
+                        &:focus {
                             color: inherit;
                         }
                     }
@@ -918,7 +1081,9 @@
                 }
 
                 table#user-grades {
-                    th.item, th.categoryitem, th.courseitem {
+                    th.item,
+                    th.categoryitem,
+                    th.courseitem {
                         border-bottom-color: ~"[[setting:alternativethemecolor@{index}]]";
                     }
                 }
@@ -983,7 +1148,7 @@
                 .moodle-actionmenu[data-enhanced].show {
                     .menu {
                         background-color: @white; // TODO: Page background colour needs to be a setting.
-                            a {
+                        a {
                             color: ~"[[setting:alternativethemeurlcolor@{index}]]";
                             &:hover {
                                 color: @white; // TODO: Page background colour needs to be a setting.
@@ -996,29 +1161,7 @@
                     }
                 }
 
-                .actions {
-                    a {
-                        color: ~"[[setting:alternativethemeurlcolor@{index}]]";
-                        &:hover, &:focus, &:active {
-                            color: ~"[[setting:alternativethemehovercolor@{index}]]";
-                        }
-                    }
-                    .moodle-actionmenu[data-enhanced].show .menu a {
-                        color: ~"[[setting:alternativethemeurlcolor@{index}]]";
-                        &:hover, &:focus, &:active {
-                            color: ~"[[setting:alternativethemehovercolor@{index}]]";
-                        }
-                    }
-                    .moodle-actionmenu[data-enhanced].show .menu a:hover {
-                        color: ~"[[setting:themenavcolor]]";
-                        background-color: ~"[[setting:alternativethemecolor@{index}]]";
-                        .@{fa-css-prefix}:before {
-                            color: ~"[[setting:alternativethemenavcolor@{index}]]";
-                        }
-                    }
-                }
-
-                .moodle-core-dragdrop-draghandle:before, .moodle-core-dragdrop-draghandle a {
+                .moodle-core-dragdrop-draghandle a {
                     color: ~"[[setting:alternativethemeurlcolor@{index}]]";
                 }
                 .menu a.menu-action,
@@ -1041,8 +1184,8 @@
                         .path-admin .buttons,
                         #fitem_id_submitbutton,
                         .fp-content-center
-                        form+div,
-                        div.backup-section+form,
+                        form + div,
+                        div.backup-section + form,
                         #fgroup_id_buttonar,
                         fieldset:last-of-type.hidden {
                             #fgroup_id_buttonar {
@@ -1055,9 +1198,11 @@
                     }
                 }
 
-                #page, #region-main {
+                #page,
+                #region-main {
                     form {
-                        .form-buttons, #fgroup_id_buttonar {
+                        .form-buttons,
+                        #fgroup_id_buttonar {
                             background-color: ~"[[setting:alternativethemecolor@{index}]]";
                         }
                     }
@@ -1083,7 +1228,11 @@
                     .avg {
                         color: ~"[[setting:alternativethemestripetextcolour@{index}]]";
                         background-color: ~"[[setting:alternativethemestripebackgroundcolour@{index}]]";
-                        a, a:hover, a:focus, a:visited, .@{fa-css-prefix} {
+                        a,
+                        a:hover,
+                        a:focus,
+                        a:visited,
+                        .@{fa-css-prefix} {
                             color: ~"[[setting:alternativethemestripeurlcolour@{index}]]";
                         }
                     }
@@ -1091,16 +1240,21 @@
 
                 &#page-grade-report-grader-index .gradeparent div.floater:first-of-type .cell:nth-child(even) {
                     color: ~"[[setting:alternativethemestripetextcolour@{index}]]";
-                    a, a:hover, a:focus, a:visited {
+                    a,
+                    a:hover,
+                    a:focus,
+                    a:visited {
                         color: ~"[[setting:alternativethemestripeurlcolour@{index}]]";
                     }
                 }
 
                 &#page-grade-report-grader-index .gradeparent div.floater:first-of-type .cell:nth-child(odd) {
-                    a, a:visited {
+                    a,
+                    a:visited {
                         color: ~"[[setting:alternativethemeurlcolor@{index}]]";
                     }
-                    a:hover, a:focus {
+                    a:hover,
+                    a:focus {
                         color: ~"[[setting:alternativethemehovercolor@{index}]]";
                     }
                 }
@@ -1131,13 +1285,21 @@
                         > tr:nth-child(odd) > th {
                             color: ~"[[setting:alternativethemestripetextcolour@{index}]]";
                             background-color: ~"[[setting:alternativethemestripebackgroundcolour@{index}]]";
-                            a:not(.btn), > a:not(.btn):hover, > a:not(.btn):focus, > a:not(.btn):visited,
-                            a.toggle-display, a.toggle-display:hover, a.toggle-display:focus, a.toggle-display:visited {
-                                color:  ~"[[setting:alternativethemestripeurlcolour@{index}]]";
+                            a:not(.btn),
+                            > a:not(.btn):hover,
+                            > a:not(.btn):focus,
+                            > a:not(.btn):visited,
+                            a.toggle-display,
+                            a.toggle-display:hover,
+                            a.toggle-display:focus,
+                            a.toggle-display:visited {
+                                color: ~"[[setting:alternativethemestripeurlcolour@{index}]]";
                             }
                         }
                         > tr:nth-child(odd) > td {
-                            .@{fa-css-prefix}, .@{fa-css-prefix}:hover, .@{fa-css-prefix}:focus {
+                            .@{fa-css-prefix},
+                            .@{fa-css-prefix}:hover,
+                            .@{fa-css-prefix}:focus {
                                 color: ~"[[setting:alternativethemestripetextcolour@{index}]]";
                             }
                         }
@@ -1149,7 +1311,8 @@
                     &.generaltable > tbody {
                         > tr:nth-child(odd) > th,
                         > tr:nth-child(odd) > td {
-                            &.leveleven, &.levelodd {
+                            &.leveleven,
+                            &.levelodd {
                                 color: ~"[[setting:alternativethemetextcolor@{index}]]";
                                 a:not(.btn):not([role="menuitem"]),
                                 a:not(.btn):not([role="menuitem"]):visited,
@@ -1235,10 +1398,33 @@
                         }
                     }
                 }
+
+                &.path-mod-quiz .submitbtns form[action$="processattempt.php"] input[type="submit"] {
+                    color: ~"[[setting:alternativethemequizsubmittextcolour@{index}]]";
+
+                    text-shadow: none;
+                    background-color: ~"[[setting:alternativethemequizsubmitbackgroundcolour@{index}]]";
+                    background-image: -moz-linear-gradient(bottom, ~"[[setting:alternativethemequizsubmitbackgroundcolourimage@{index}]]", ~"[[setting:alternativethemequizsubmitbackgroundcolourrgba@{index}]]"); // FF 3.6+
+                    background-image: -webkit-gradient(linear, 0 100%, 0 0, from(~"[[setting:alternativethemequizsubmitbackgroundcolourimage@{index}]]"), to(~"[[setting:alternativethemequizsubmitbackgroundcolourrgba@{index}]]")); // Safari 4+, Chrome 2+
+                    background-image: -webkit-linear-gradient(bottom, ~"[[setting:alternativethemequizsubmitbackgroundcolourimage@{index}]]", ~"[[setting:alternativethemequizsubmitbackgroundcolourrgba@{index}]]"); // Safari 5.1+, Chrome 10+
+                    background-image: -o-linear-gradient(bottom, ~"[[setting:alternativethemequizsubmitbackgroundcolourimage@{index}]]", ~"[[setting:alternativethemequizsubmitbackgroundcolourrgba@{index}]]"); // Opera 11.10
+                    background-image: linear-gradient(to top, ~"[[setting:alternativethemequizsubmitbackgroundcolourimage@{index}]]", ~"[[setting:alternativethemequizsubmitbackgroundcolourrgba@{index}]]"); // Standard, IE10
+
+                    &:hover, &:focus, &:active, &.active, &.disabled, &[disabled] {
+                        color: ~"[[setting:alternativethemequizsubmittexthovercolour@{index}]]";
+                        text-shadow: 0 1px 1px rgba(64, 64, 64, .75);
+                        background-color: ~"[[setting:alternativethemequizsubmitbackgroundhovercolour@{index}]]";
+                        background-image: -moz-linear-gradient(bottom, ~"[[setting:alternativethemequizsubmitbackgroundhovercolourimage@{index}]]", ~"[[setting:alternativethemequizsubmitbackgroundhovercolourrgba@{index}]]"); // FF 3.6+
+                        background-image: -webkit-gradient(linear, 0 100%, 0 0, from(~"[[setting:alternativethemequizsubmitbackgroundhovercolourimage@{index}]]"), to(~"[[setting:alternativethemequizsubmitbackgroundhovercolourrgba@{index}]]")); // Safari 4+, Chrome 2+
+                        background-image: -webkit-linear-gradient(bottom, ~"[[setting:alternativethemequizsubmitbackgroundhovercolourimage@{index}]]", ~"[[setting:alternativethemequizsubmitbackgroundhovercolourrgba@{index}]]"); // Safari 5.1+, Chrome 10+
+                        background-image: -o-linear-gradient(bottom, ~"[[setting:alternativethemequizsubmitbackgroundhovercolourimage@{index}]]", ~"[[setting:alternativethemequizsubmitbackgroundhovercolourrgba@{index}]]"); // Opera 11.10
+                        background-image: linear-gradient(to top, ~"[[setting:alternativethemequizsubmitbackgroundhovercolourimage@{index}]]", ~"[[setting:alternativethemequizsubmitbackgroundhovercolourrgba@{index}]]"); // Standard, IE10
+                    }
+                }
             }
 
             @media (max-width: @navbarCollapseWidth) {
-                body.essential-colours-alternative@{index} {
+                .essential-colours-alternative@{index} {
                     .nav-collapse {
                         background-color: ~"[[setting:alternativethemecolor@{index}]]";
                         .dropdown-menu li > a,
@@ -1248,19 +1434,22 @@
                     }
                     .navbar {
                         .nav-collapse.in {
-                            .nav, .nav .dropdown-menu {
-                                .dropdown-submenu  {
+                            .nav,
+                            .nav .dropdown-menu {
+                                .dropdown-submenu {
                                     .dropdown-toggle:after {
                                         border-left-color: transparent;
                                         border-top-color: ~"[[setting:alternativethemeiconcolor@{index}]]";
                                     }
-                                    &:focus, &:hover {
+                                    &:focus,
+                                    &:hover {
                                         .dropdown-toggle:after {
                                             border-top-color: ~"[[setting:alternativethemenavcolor@{index}]]";
                                         }
                                     }
                                 }
-                                .dropdown-submenu, .dropdown-submenu:hover {
+                                .dropdown-submenu,
+                                .dropdown-submenu:hover {
                                     &.open {
                                         > a {
                                             color: ~"[[setting:alternativethemenavcolor@{index}]]";
@@ -1279,7 +1468,8 @@
             /* @end */
 
             .navbar .navbar-inner #custom_menu_themecolours .dropdown-menu li > a.alternative@{index} {
-                &:hover, &:focus {
+                &:hover,
+                &:focus {
                     color: ~"[[setting:alternativethemenavcolor@{index}]]";
                     background-color: ~"[[setting:alternativethemecolor@{index}]]";
                     background-image: -moz-linear-gradient(top, ~"[[setting:alternativethemetextcolor@{index}]]", ~"[[setting:alternativethemecolor@{index}]]");
@@ -1302,3 +1492,5 @@
 
 // Generate all of the alternatives.
 #essential > .alternative(4);
+
+/*! Essential lint enable */

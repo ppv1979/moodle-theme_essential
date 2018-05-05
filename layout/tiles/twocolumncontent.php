@@ -18,6 +18,7 @@
  * Essential is a clean and customizable theme.
  *
  * @package     theme_essential
+ * @copyright   2017 Gareth J Barnard
  * @copyright   2016 Gareth J Barnard
  * @copyright   2015 Gareth J Barnard
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -25,9 +26,16 @@
 
 defined('MOODLE_INTERNAL') || die;
 
+$coursetitleposition = \theme_essential\toolbox::get_setting('coursetitleposition');
+if (empty($coursetitleposition)) {
+    $coursetitleposition = 'within';
+}
+if ($coursetitleposition == 'above') {
+    echo $OUTPUT->course_title(false);
+}
 if ($pagebottomregion) {
     echo '<div id="content" class="span12">';
-} else if ((($hasboringlayout) && ($left)) || ((!$hasboringlayout) && (!$left))) {
+} else if ($hasboringlayout) {
     echo '<div id="content" class="span9 pull-right">';
 } else {
     echo '<div id="content" class="span9">';
@@ -36,16 +44,19 @@ if (\theme_essential\toolbox::get_setting('pagetopblocks')) {
     echo $OUTPUT->essential_blocks('page-top', 'row-fluid', 'aside', 'pagetopblocksperrow');
 }
 echo '<section id="region-main">';
-echo $OUTPUT->course_title();
+if ($coursetitleposition == 'within') {
+    echo $OUTPUT->course_title();
+}
 echo $OUTPUT->course_content_header();
 echo $OUTPUT->main_content();
+echo $OUTPUT->activity_navigation();
 if (empty($PAGE->layout_options['nocoursefooter'])) {
     echo $OUTPUT->course_content_footer();
 }
 echo '</section>';
 echo '</div>';
 if (!$pagebottomregion) {
-    if ((($hasboringlayout) && ($left)) || ((!$hasboringlayout) && (!$left))) {
+    if ($hasboringlayout) {
         echo $OUTPUT->essential_blocks('side-pre', 'span3 desktop-first-column');
     } else {
         echo $OUTPUT->essential_blocks('side-pre', 'span3');
